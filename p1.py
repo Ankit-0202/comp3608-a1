@@ -2,10 +2,10 @@ from tree import Node
 
 
 def connect_four_nm(contents, turn):
+    
     new_state = input_to_string(contents)
-    possible_moves = []
 
-    node = Node
+    current_node = Node
 
     depth = 1000
 
