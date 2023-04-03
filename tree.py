@@ -2,17 +2,23 @@ class Node:
     
     depth = 0
     player = 0
-    state = 0
     score = 0
-    children =[[-1, -1, -1],
-               [-1, -1, -1],
-               [-1, -1, -1]]
+    children =[0,0,0,0,0,0,0]
     parent = None
+    
+    state = [[]]
     
     def __init__(self, player, state):
         self.player = player
-        self.state = state
         self.score = self.SCORE(self.state)
+        
+        self.state = [[0,0,0,0,0,0],
+                      [0,0,0,0,0,0],
+                      [0,0,0,0,0,0],
+                      [0,0,0,0,0,0],
+                      [0,0,0,0,0,0],
+                      [0,0,0,0,0,0],
+                      [0,0,0,0,0,0]]
     
     def add_child(self, child, column, row):
         
