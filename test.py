@@ -1,35 +1,4 @@
-class Node:
-    
-    depth = 0
-    player = 0
-    state = 0
-    score = 0
-    children =[[-1, -1, -1],
-               [-1, -1, -1],
-               [-1, -1, -1]]
-    parent = None
-    
-    def __init__(self, player, state):
-        self.player = player
-        self.state = state
-        self.score = self.SCORE(self.state)
-    
-    def add_child(self, child, column, row):
-        
-        self.children[row][column] = child
-        child.parent = self
-        
-    def UTILITY(state):
-        return
-        # if red is winner:
-        # 	return 10000
-        # if yellow is winner
-        # 	return -10000
-
-    def EVALUATION(self, state):
-        return self.SCORE(state, 'r') - self.SCORE(state, 'y')
-        
-    def NUM_IN_A_ROW(self, count, state, player):
+def NUM_IN_A_ROW(count, state, player):
         # Determine the dimensions of the game state
         rows = len(state)
         cols = len(state[0])
@@ -98,15 +67,10 @@ class Node:
                     num_in_a_row += 1
 
         return num_in_a_row
-
-    def SCORE(self, state, player):
-        val = self.count_tokens(state, player) + 10 * self.NUM_IN_A_ROW(2, state, player) + 100 * self.NUM_IN_A_ROW(3, state, player) + 1000 * self.NUM_IN_A_ROW(4, state, player)
-        return val
-        
-    def count_tokens(state, item):
-        count = 0
-        for row in state:
-            for element in row:
-                if element == item:
-                    count += 1
-        return count
+    
+    
+state = [[0, 0, 0, 0],
+         [1, 0, 0, 0],
+         [0, 1, 0, 0]]
+    
+print(NUM_IN_A_ROW(2,))

@@ -9,7 +9,10 @@
 
 def connect_four_mm(contents, turn, max_depth):
     
-    new_state = input_to_string(contenets)
+    new_state = input_to_string(contents)
+    
+    for i in range(8):
+        
     
     return ''
 
