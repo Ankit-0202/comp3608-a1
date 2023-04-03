@@ -22,9 +22,6 @@ def connect_four_nm(contents, turn):
 
 
 
-
-
-
 def connect_four_mm(contents, turn, max_depth):
     
     new_state = input_to_string(contents)
