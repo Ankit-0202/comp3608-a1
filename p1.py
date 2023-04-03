@@ -5,15 +5,22 @@ def input_to_string(str):
     new_input = [[*i] for i in list]
     return new_input
 
-def create_tree(node: Node):
+def create_tree(node: Node, turn):
     
     for i in range(0, 7):
         
         # new_node
-        print("f")
+        child = Node(turn, node.state)
         
+        node.add_child(child, i)
         
-    #     create_tree(node)
+        child.make_move(i)
+    
+        if child.root == False:
+            if turn == 'r':
+                create_tree(child, 'y')
+            if turn == 'y':
+                create_tree(child, 'r')
         
         
 
