@@ -4,15 +4,15 @@ class Node:
     player = 0
     state = 0
     score = 0
-    children =[[0, 0, 0],
-               [0, 0, 0],
-               [0, 0, 0]]
+    children =[[-1, -1, -1],
+               [-1, -1, -1],
+               [-1, -1, -1]]
     parent = None
     
     def __init__(self, player, state):
         self.player = player
         self.state = state
-        self.score = SCORE(self.state)
+        self.score = self.SCORE(self.state)
         
     
     def add_child(self, child, column, row):
@@ -27,20 +27,19 @@ class Node:
         # if yellow is winner
         # 	return -10000
 
-    def EVALUATION(state):
-        return
-        # return SCORE(state, red player) – SCORE(state, yellow player)
-
-    def SCORE(state, player):
-        val = count_tokens(state, player) +
-            10 * NUM_IN_A_ROW(2, state, player) +
-            100 * NUM_IN_A_ROW(3, state, player) +
-            1000 * NUM_IN_A_ROW(4, state, player)
-        return val
-
-    def NUM_IN_A_ROW(count, state, player):
+    def EVALUATION(self, state):
+        return self.SCORE(state, 'r') - self.SCORE(state, 'y')
+        
+    def NUM_IN_A_ROW(self, count, state, player):
         return
         # returns the number of times that <state> contains a <count>-in-a-row for the given <player>
+
+    def SCORE(self, state, player):
+        val = count_tokens(state, player) +
+        10 * self.NUM_IN_A_ROW(2, state, player) +
+        100 * self.NUM_IN_A_ROW(3, state, player) +
+        1000 * self.NUM_IN_A_ROW(4, state, player)
+        return val
         
     def count_tokens(state, item):
         count = 0
