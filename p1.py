@@ -10,14 +10,14 @@ def connect_four_nm(contents, turn):
     depth = 1000
 
 
-    if depth == 0 or node.NUM_IN_A_ROW == 4:
+    if depth == 0 or node.NUM_IN_A_ROW() == 4:
         return "hi"
     else:
         value = float('-inf')
         ## For each legal moved allowed
         node.state = node.change_state(node.state, "pos")
         value = max(value, -connect_four_nm(new_state, depth - 1, node.opp(turn)))
-        
+    return value
         
 
 
