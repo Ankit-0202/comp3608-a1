@@ -1,14 +1,24 @@
+from tree import Node
 
-"""
-Initialize an empty list to store the positions of the "." in each column.
-For each column in the 2d array:
-a. Initialize a variable highest_row to store the row index of the highest occurrence of "." in the column. Set it to None initially.
-b. Loop through each row in the column:
-i. If the current element is ".", and highest_row is None or the current row index is greater than highest_row, set highest_row to the current row index.
-c. If highest_row is not None, append the tuple (highest_row, column_index) to the list of positions.
-Return the list of positions.
-"""
 
+def connect_four_nm(contents, turn):
+    new_state = input_to_string(contents)
+    possible_moves = []
+
+    node = Node
+
+    depth = 1000
+
+
+    if depth == 0 or node.NUM_IN_A_ROW == 4:
+        return "hi"
+    else:
+        value = float('-inf')
+        ## For each legal moved allowed
+        node.state = node.change_state(node.state, "pos")
+        value = max(value, -connect_four_nm(new_state, depth - 1, node.opp(turn)))
+        
+        
 
 
 
