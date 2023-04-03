@@ -34,7 +34,7 @@ class Node:
         # Determine the dimensions of the game state
         rows = len(state)
         cols = len(state[0])
-
+        
         # Define the function to check for a win in a row
         def check_row(row):
             in_a_row = 0
@@ -46,7 +46,6 @@ class Node:
                 else:
                     in_a_row = 0
             return False
-
         # Define the function to check for a win in a column
         def check_col(col):
             in_a_row = 0
@@ -58,7 +57,6 @@ class Node:
                 else:
                     in_a_row = 0
             return False
-
         # Define the function to check for a win on a diagonal
         def check_diagonal(start_row, start_col, delta_row, delta_col):
             # Check if the diagonal is long enough to contain a win
@@ -83,18 +81,15 @@ class Node:
                 row += delta_row
                 col += delta_col
             return False
-
         # Check for wins in rows
         num_in_a_row = 0
         for row in range(rows):
             if check_row(row):
                 num_in_a_row += 1
-
         # Check for wins in columns
         for col in range(cols):
             if check_col(col):
                 num_in_a_row += 1
-
         # Check for wins on diagonals
         for row in range(rows):
             for col in range(cols):
@@ -106,7 +101,7 @@ class Node:
         return num_in_a_row
 
     def SCORE(self, state, player):
-        val = count_tokens(state, player) + 10 * self.NUM_IN_A_ROW(2, state, player) + 100 * self.NUM_IN_A_ROW(3, state, player) + 1000 * self.NUM_IN_A_ROW(4, state, player)
+        val = self.count_tokens(state, player) + 10 * self.NUM_IN_A_ROW(2, state, player) + 100 * self.NUM_IN_A_ROW(3, state, player) + 1000 * self.NUM_IN_A_ROW(4, state, player)
         return val
         
     def count_tokens(state, item):
