@@ -1,5 +1,13 @@
 
-
+"""
+Initialize an empty list to store the positions of the "." in each column.
+For each column in the 2d array:
+a. Initialize a variable highest_row to store the row index of the highest occurrence of "." in the column. Set it to None initially.
+b. Loop through each row in the column:
+i. If the current element is ".", and highest_row is None or the current row index is greater than highest_row, set highest_row to the current row index.
+c. If highest_row is not None, append the tuple (highest_row, column_index) to the list of positions.
+Return the list of positions.
+"""
 
 
 
@@ -10,10 +18,9 @@
 def connect_four_mm(contents, turn, max_depth):
     
     new_state = input_to_string(contents)
-    
-    for i in range(8):
-        
-    
+
+    possible_moves = []
+
     return ''
 
 if __name__ == '__main__':
