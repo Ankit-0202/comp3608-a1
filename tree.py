@@ -19,7 +19,7 @@ class Node:
         self.player = player
         self.score = self.SCORE(self.state, self.player)
         
-        self.state = reversed(state)
+        self.state = state
     
     def add_child(self, child, column):
         
@@ -110,11 +110,20 @@ class Node:
         return count
     
     def make_move(self, column):
-        for row in range(0, 6):
-            if self.state[6 - row][column] != ".":
+        
+        if self.state[5][column] == '.':
+            self.state[5][column] = self.player
+            return
+        
+        for row in range(1, 6):
+            if self.state[5 - row][column] != ".":
+                print(self.state[5 - row][column])
                 # If not full
                 if row != 0:
-                    self.state[6 - row + 1][column] = self.player
+                    self.state[5 - row + 1][column] = self.player
+                    self.check_full()
+                    return
+        self.state[5][column] = self.player
                     
         self.check_full()
         
