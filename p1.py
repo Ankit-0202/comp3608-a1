@@ -1,5 +1,19 @@
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def UTILITY(state):
 	# if red is winner:
 	# 	return 10000
