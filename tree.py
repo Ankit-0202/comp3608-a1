@@ -1,23 +1,25 @@
 class Node:
     
+    root = False
+    
     depth = 0
     player = 0
     score = 0
     children =        [0,0,0,0,0,0,0]
     parent = None
     
-    state = [[0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0],
-             [0,0,0,0,0,0,0]]
+    state = [[".",".",".",".",".",".","."],
+             [".",".",".",".",".",".","."],
+             [".",".",".",".",".",".","."],
+             [".",".",".",".",".",".","."],
+             [".",".",".",".",".",".","."],
+             [".",".",".",".",".",".","."]]
     
     def __init__(self, player, state):
         self.player = player
-        self.score = self.SCORE(self.state)
+        self.score = self.SCORE(self.state, self.player)
         
-        self.state = state
+        self.state = reversed(state)
     
     def add_child(self, child, column):
         
@@ -34,10 +36,10 @@ class Node:
         return self.SCORE(state, 'r') - self.SCORE(state, 'y')
 
     def SCORE(self, state, player):
-        val = self.count_tokens(state, player) + 10 * self.NUM_IN_A_ROW(2, state, player) + 100 * self.NUM_IN_A_ROW(3, state, player) + 1000 * self.NUM_IN_A_ROW(4, state, player)
+        val = self.count_tokens(state, player) + 10 * self.NUM_IN_A_ROW(state, 2, player) + 100 * self.NUM_IN_A_ROW(state, 3, player) + 1000 * self.NUM_IN_A_ROW(state, 4, player)
         return val
         
-    def count_tokens(state, item):
+    def count_tokens(self, state, item):
         count = 0
         for row in state:
             for element in row:
@@ -106,3 +108,22 @@ class Node:
                 count = count - self.NUM_IN_A_ROW(self, arr, 4, char)*2
         
         return count
+    
+    def make_move(self, column):
+        for row in range(0, 6):
+            if self.state[6 - row][column] != ".":
+                # If not full
+                if row != 0:
+                    self.state[6 - row + 1][column] = self.player
+                    
+        self.check_full()
+        
+    def check_full(self):
+        for row in self.state:
+            for element in row:
+                if element == '.':
+                    self.root = False
+                    return
+                    
+        self.root = True
+        
