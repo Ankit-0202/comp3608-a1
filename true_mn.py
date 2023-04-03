@@ -19,7 +19,7 @@ def true_ab_pruning(node: Node, depth, alpha, beta):
      if node.root == True:
           return node.EVALUATION(node.state)
      for child in node.children:
-          alpha = max(alpha, -true_ab_pruning(child, depth - 1, -beta, -alpha))
+          alpha := max(alpha, -true_ab_pruning(child, depth - 1, -beta, -alpha))
           if beta <= alpha:
                break
      return alpha
