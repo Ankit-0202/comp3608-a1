@@ -1,3 +1,10 @@
+## Hi
+
+# UTILITY(state):
+# 	if red is winner:
+# 		return 10000
+# 	if yellow is winner
+# 		return -10000
 
 
 
