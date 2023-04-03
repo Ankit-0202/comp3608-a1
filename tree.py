@@ -6,18 +6,18 @@ class Node:
     children =        [0,0,0,0,0,0,0]
     parent = None
     
-    state = [[]]
+    state = [[0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0]]
     
     def __init__(self, player, state):
         self.player = player
         self.score = self.SCORE(self.state)
         
-        self.state = [[0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0],
-                      [0,0,0,0,0,0,0]]
+        self.state = state
     
     def add_child(self, child, column, row):
         
