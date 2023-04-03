@@ -111,21 +111,11 @@ class Node:
     
     def make_move(self, column):
         
-        if self.state[5][column] == '.':
-            self.state[5][column] = self.player
-            return
-        
-        for row in range(1, 6):
-            if self.state[5 - row][column] != ".":
-                print(self.state[5 - row][column])
-                # If not full
-                if row != 0:
-                    self.state[5 - row + 1][column] = self.player
-                    self.check_full()
-                    return
-        self.state[5][column] = self.player
-                    
-        self.check_full()
+        for row in range(5, -1, -1):
+            if self.state[row][column] == '.':
+                self.state[row][column] = self.player
+                self.check_full()
+                return
         
     def check_full(self):
         for row in self.state:

@@ -19,6 +19,7 @@ def create_tree(node: Node, turn):
         child.make_move(i)
         child.depth = node.depth + 1
         
+        print(f"\nRe:{child.depth}\n")
         print(turn)
         for i in child.state:
             print(i)
