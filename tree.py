@@ -24,13 +24,12 @@ class Node:
         self.children[column] = child
         child.parent = self
         
-    def UTILITY(state):
-        return
-        # if red is winner:
-        # 	return 10000
-        # if yellow is winner
-        # 	return -10000
-
+    def UTILITY(self, state):
+        if self.NUM_IN_A_ROW(self, state, 4, 'r') > 0:
+            return 10000
+        if self.NUM_IN_A_ROW(self, state, 4, 'y') > 0:
+            return -10000
+        
     def EVALUATION(self, state):
         return self.SCORE(state, 'r') - self.SCORE(state, 'y')
 
