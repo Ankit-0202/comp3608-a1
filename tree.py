@@ -111,12 +111,23 @@ class Node:
         
         return count
     
-    def make_move(self, column):
-        for row in range(5, -1, -1):
-            if self.state[row][column] == '.':
-                self.state[row][column] = self.player
-                self.check_full()
+    # def make_move(self, column):
+    #     for row in range(5, -1, -1):
+    #         if self.state[row][column] == '.':
+    #             self.state[row][column] = self.player
+    #             self.check_full()
+    #             return
+    
+    def make_move(self, i):
+        if i < 0 or i >= len(self.state[0]):
+            return False  # invalid column index
+        if all(self.state[row][i] != 0 for row in range(len(self.state))):
+            return False  # column is full
+        for row in range(len(self.state)):
+            if self.state[row][i] == 0:
+                self.state[row][i] = self.player
                 return
+        self.check_full()
         
     def check_full(self):
         for row in self.state:
