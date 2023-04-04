@@ -51,9 +51,9 @@ def get_best_column(node: Node, maximizing):
         count += 1
     
     if maximizing == False:
-        min = min(scores)
+        m = min(scores)
         return scores.index(min)
 
     if maximizing == True:
-        max = max(scores)
+        m = max(scores)
         return scores.index(max)
