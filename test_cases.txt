@@ -80,10 +80,3 @@ Your function returned:
 '0\n1'
 when it was meant to return:
 '0\n344'
-Running the first hidden test.
-Running the second hidden test.
-Running the third hidden test.
-Running the fourth hidden test.
-Running the fifth hidden test.
-Running the sixth hidden test.
-Running the seventh hidden test.
