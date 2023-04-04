@@ -5,6 +5,12 @@ from tree1 import Node
 
 
 def true_mn(node: Node, nodes_examined, depth, maximizing = True):
+     if depth == 0:
+          game_ended = node.UTILITY(node.state)
+          if game_ended != 0:
+               return node.UTILITY(node.state), nodes_examined
+          else:
+               return node.EVALUATION(node.state),nodes_examined
    
      game_ended = node.UTILITY(node.state)
      if game_ended != 0:
