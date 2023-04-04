@@ -1,4 +1,4 @@
-from tree import Node
+from tree1 import Node
 from true_mn import true_mn
 from time import sleep
 

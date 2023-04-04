@@ -4,7 +4,7 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
    
    print(node.root)
    nodes_examined = nodes_examined + 1
-   if node.root == True:
+   if depth == 0:
         game_ended = node.UTILITY(node.state)
         if game_ended > 0:
              return node.UTILITY(node.state), nodes_examined
