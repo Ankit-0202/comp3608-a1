@@ -15,25 +15,28 @@ def create_tree(node: Node, turn, max_depth):
     scores = []
     
     for i in range(0, 7):
+        if node.state[0][i] != '.':
+            continue
+        # new_node
         child = Node(turn, node.state)
+
         
         node.add_child(child, i)
+        print(f'hello{i}')
         child.make_move(i)
         child.depth = node.depth + 1
         
+        print(f"\nRe:{child.depth}\n")
+        print(turn)
+        for j in child.state:
+            print(j)
         if child.root == False:
             if turn == 'r':
                 scores.append(create_tree(child, 'y', max_depth))
             if turn == 'y':
-                scores.append(create_tree(child, 'r', max_depth))
+                create_tree(child, 'r')
+
         
-    if len(scores) == 0:
-        return node.SCORE(node.state, turn)
-        
-    if turn == 'r':
-        return max(scores)
-    if turn == 'y':
-        return min(scores)
         
 
 def connect_four_mm(contents, turn, max_depth):
