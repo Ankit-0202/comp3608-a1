@@ -26,8 +26,8 @@ def create_tree(node: Node, turn, max_depth):
                 child.depth = node.depth + 1
                 if (child.UTILITY(child.state) != 0):
                     break
-                for j in child.state:
-                    print(j)
+                # for j in child.state:
+                    # print(j)
                 if child.root == False:
                     if turn == 'r':
                         create_tree(child, 'y', max_depth)
@@ -50,7 +50,7 @@ def connect_four_mm(contents, turn, max_depth):
 
     create_tree(head_node, turn, max_depth)
 
-    print(head_node.children[0].player)
+    # print(head_node.children[0].player)
 
     
     column, values, nodes_examined = true_mn(head_node, 0, max_depth)
@@ -58,11 +58,11 @@ def connect_four_mm(contents, turn, max_depth):
 
 
     
-    print("hi")
-    print(f'{column}\n{nodes_examined}')
-    print("bye")
+    # print("hi")
+    # print(f'{column}\n{nodes_examined}')
+    # print("bye")
 
-    return ''
+    return f'{column}\n{nodes_examined}'
 
 
 def get_valid_moves(board):
