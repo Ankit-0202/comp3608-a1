@@ -41,7 +41,7 @@ def true_ab_pruning(node: Node, depth, alpha, beta):
      return alpha
 
 
-def get_best_column(node: Node, min_or_max):
+def get_best_column(node: Node, maximizing):
     
     scores = [0 for _ in range(7)]
     
@@ -50,10 +50,10 @@ def get_best_column(node: Node, min_or_max):
         scores[count] = child.score
         count += 1
     
-    if min_or_max == 'min':
+    if maximizing == False:
         min = min(scores)
         return scores.index(min)
 
-    if min_or_max == 'max':
+    if maximizing == True:
         max = max(scores)
         return scores.index(max)
