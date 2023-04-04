@@ -67,9 +67,6 @@ def connect_four_mm(contents, turn, max_depth):
     column, values, nodes_examined = true_mn(head_node, 0, max_depth)
 
     
-
-
-    
     print("hi")
     print(f'{column}\n{nodes_examined}')
     print("bye")
