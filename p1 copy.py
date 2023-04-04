@@ -63,7 +63,7 @@ def connect_four_mm(contents, turn, max_depth):
 
     
     print("hi")
-    #print(f'{values}\n{nodes_examined}')
+    print(f'{values}\n{nodes_examined}')
     print("bye")
 
     return ''
