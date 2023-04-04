@@ -126,3 +126,4 @@ class Node:
                     
         self.root = True
         
+    # def get_column
