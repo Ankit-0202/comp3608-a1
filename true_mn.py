@@ -6,9 +6,9 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
      if depth == 0:
           game_ended = node.UTILITY(node.state)
           if game_ended != 0:
-               return  get_best_column(node, maximizing), node.UTILITY(node.state), nodes_examined
+               return get_best_column(node, maximizing), node.UTILITY(node.state), nodes_examined
           else:
-               return  get_best_column(node, maximizing), node.EVALUATION(node.state),nodes_examined
+               return get_best_column(node, maximizing), node.EVALUATION(node.state),nodes_examined
    
      game_ended = node.UTILITY(node.state)
      if game_ended != 0:
