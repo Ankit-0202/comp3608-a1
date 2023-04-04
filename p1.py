@@ -1,5 +1,5 @@
 from tree import Node
-# from time import sleep
+from time import sleep
 
 def input_to_string(str):
     list = str.split(",")
@@ -7,7 +7,6 @@ def input_to_string(str):
     return new_input[::-1]
 
 def create_tree(node: Node, turn, max_depth):
-    # sleep(0.1)
 
     if node.depth == max_depth:
         return node.SCORE(node.state, turn)
@@ -15,14 +14,14 @@ def create_tree(node: Node, turn, max_depth):
     scores = []
     
     for i in range(0, 7):
-        if node.state[0][i] != '.':
-            continue
+        # if node.state[0][i] != '.':
+        #     continue
         # new_node
         child = Node(turn, node.state)
 
         
-        node.add_child(child, i)
         child.make_move(i)
+        node.add_child(child, i)
         child.depth = node.depth + 1
         
         print(f"\nRe:{child.depth}\n")
@@ -34,8 +33,6 @@ def create_tree(node: Node, turn, max_depth):
                 scores.append(create_tree(child, 'y', max_depth))
             if turn == 'y':
                 scores.append(create_tree(child, 'r', max_depth))
-
-        
         
 
 def connect_four_mm(contents, turn, max_depth):
