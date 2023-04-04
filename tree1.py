@@ -1,3 +1,4 @@
+import copy
 class Node:
     
     root = False
@@ -125,3 +126,26 @@ class Node:
                     return
                     
         self.root = True
+
+
+## "Rewrite this code"
+    def simulate_move(self, row, column, player):
+        """
+        Simulates a move by the given player in the given column on the given state.
+        Returns a new state representing the resulting game state after the move.
+        """
+        # Create a deep copy of the state to avoid modifying the original
+        new_state = copy.deepcopy(self.state)
+
+        # Find the first empty row in the given column
+        while row >= 0 and new_state[row][column] != ".":
+            row -= 1
+
+        # If the column is full, return the original state
+        if row < 0:
+            return new_state
+
+        # Otherwise, update the board with the new move
+        new_state[row][column] = str(player)
+
+        return new_state
