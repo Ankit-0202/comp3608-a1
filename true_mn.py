@@ -1,4 +1,4 @@
-from tree import Node
+from tree1 import Node
 
 def true_mn(node: Node, nodes_examined, depth, maximizing = True):
    
