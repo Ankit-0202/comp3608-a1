@@ -30,12 +30,12 @@ def create_tree(node: Node, turn, max_depth):
                     print(j)
                 if child.root == False:
                     if turn == 'r':
-                       create_tree(child, 'y', max_depth)
+                        create_tree(child, 'y', max_depth)
                     if turn == 'y':
-                       create_tree(child, 'r', max_depth)
+                        create_tree(child, 'r', max_depth)
 
         
-        
+
 
 def connect_four_mm(contents, turn, max_depth):
     
@@ -56,7 +56,7 @@ def connect_four_mm(contents, turn, max_depth):
     
     node, values, nodes_examined = true_mn(head_node, 0, max_depth)
     
-   
+
 
     
     print("hi")
@@ -76,7 +76,22 @@ def get_valid_moves(board):
     return valid_moves
 
 
+def get_best_column(node: Node, min_or_max):
+    
+    scores = [7]
+    
+    count = 0
+    for child in node.children:
+        scores[count] = child.score
+        count += 1
+    
+    if min_or_max == 'min':
+        min = min(scores)
+        return scores.index(min)
 
+    if min_or_max == 'max':
+        max = max(scores)
+        return scores.index(max)
 
 
 
