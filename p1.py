@@ -22,7 +22,6 @@ def create_tree(node: Node, turn, max_depth):
 
         
         node.add_child(child, i)
-        print(f'hello{i}')
         child.make_move(i)
         child.depth = node.depth + 1
         
@@ -69,7 +68,7 @@ def connect_four_mm(contents, turn, max_depth):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 1)
+    connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 5)
 
     
     
