@@ -20,7 +20,8 @@ def create_tree(node: Node, turn, max_depth):
                 if node.check_full():
                     return
             else:
-                child = Node(turn, node.state)
+                new_state = node.simulate_move(m[0], m[1], turn)
+                child = Node(turn, new_state)
                 node.add_child(child, m[1])
                 child.make_move(m[0], m[1])
                 child.depth = node.depth + 1
