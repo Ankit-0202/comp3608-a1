@@ -9,14 +9,16 @@ def input_to_string(str):
 
 def create_tree(node: Node, turn, max_depth):
         sleep(1)
+
         if node.depth >= max_depth:
             return
+        
+        children = []
         for i in range(0, 7):
             if node.state[0][i] != '.':
                 continue
             # new_node
             child = Node(turn, node.state)
-
             
             node.add_child(child, i)
             print(f'hello{i}')
@@ -29,9 +31,9 @@ def create_tree(node: Node, turn, max_depth):
                 print(j)
             if child.root == False:
                 if turn == 'r':
-                    create_tree(child, 'y', max_depth)
+                    children+=create_tree(child, 'y', max_depth)
                 if turn == 'y':
-                    create_tree(child, 'r', max_depth)
+                    children+=create_tree(child, 'r', max_depth)
 
         
         
