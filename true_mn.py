@@ -47,8 +47,9 @@ def get_best_column(node: Node, maximizing):
      
      count = 0
      for child in node.children:
-          scores[count] = child.score
-          count += 1
+          if child != 0:
+               scores[count] = child.score
+               count += 1
      
      if maximizing == False:
           m = min(scores)
