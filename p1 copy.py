@@ -34,7 +34,6 @@ def create_tree(node: Node, turn, max_depth):
                     if turn == 'y':
                         create_tree(child, 'r', max_depth)
 
-        
 
 
 def connect_four_mm(contents, turn, max_depth):
