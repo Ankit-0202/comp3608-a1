@@ -112,7 +112,6 @@ class Node:
         return count
     
     def make_move(self, column):
-        
         for row in range(5, -1, -1):
             if self.state[row][column] == '.':
                 self.state[row][column] = self.player
