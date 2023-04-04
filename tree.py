@@ -137,4 +137,3 @@ class Node:
                     return
                     
         self.root = True
-        
