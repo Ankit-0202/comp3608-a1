@@ -50,9 +50,13 @@ def get_best_column(node: Node, maximizing, value):
           if child != 0:
                scores[count] = child.score
                count += 1
+               
+               
+     return scores.index(value)
+               
      
-     if maximizing == False:
-          return scores.index(value)
+     # if maximizing == False:
+     #      return scores.index(value)
 
-     if maximizing == True:
-          return scores.index(value)
+     # if maximizing == True:
+     #      return scores.index(value)
