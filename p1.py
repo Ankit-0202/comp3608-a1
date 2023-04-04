@@ -1,5 +1,5 @@
 from tree import Node
-from time import sleep
+# from time import sleep
 
 def input_to_string(str):
     list = str.split(",")
@@ -7,7 +7,7 @@ def input_to_string(str):
     return new_input[::-1]
 
 def create_tree(node: Node, turn, max_depth):
-    sleep(0.1)
+    # sleep(0.1)
 
     if node.depth == max_depth:
         return node.SCORE(node.state, turn)

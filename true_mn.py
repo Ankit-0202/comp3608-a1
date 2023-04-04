@@ -29,7 +29,3 @@ def true_ab_pruning(node: Node, depth, alpha, beta):
           if beta <= alpha:
                break
      return alpha
-     
-     
-
-    
