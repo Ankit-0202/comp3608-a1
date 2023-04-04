@@ -1,5 +1,4 @@
 from tree1 import Node
-import true_mn
 from true_mn import true_mn
 # from time import sleep
 
@@ -71,10 +70,9 @@ def connect_four_mm(contents, turn, max_depth):
     values, nodes_examined = true_mn(head_node, 0, max_depth)
 
     get_best_column(node, node.score),
+
     
-    columnr = get_lak()
-    
-    column = columnr[0]
+    column = get_best_column(head_node, head_node.score),
 
     
     # print("hi")
@@ -82,6 +80,7 @@ def connect_four_mm(contents, turn, max_depth):
     # print("bye")
 
     return f'{column}\n{nodes_examined + 1}'
+
 
 def get_best_column(node: Node, value):
      # print("Value:", value)
