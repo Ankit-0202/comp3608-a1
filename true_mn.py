@@ -13,6 +13,7 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
                     lock_and_key = [get_best_column(node, node.score), 1]
                
                return get_best_column(node, node.score), node.UTILITY(node.state), nodes_examined
+          
           else:
                return "a", node.EVALUATION(node.state),nodes_examined
    
