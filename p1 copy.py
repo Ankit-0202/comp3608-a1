@@ -7,8 +7,10 @@ def input_to_string(str):
     new_input = [[*i] for i in list]
     return new_input[::-1]
 
-def create_tree(node: Node, turn):
+def create_tree(node: Node, turn, max_depth):
         sleep(1)
+        if node.depth >= max_depth:
+            return
         for i in range(0, 7):
             if node.state[0][i] != '.':
                 continue
@@ -27,9 +29,9 @@ def create_tree(node: Node, turn):
                 print(j)
             if child.root == False:
                 if turn == 'r':
-                    create_tree(child, 'y')
+                    create_tree(child, 'y', max_depth)
                 if turn == 'y':
-                    create_tree(child, 'r')
+                    create_tree(child, 'r', max_depth)
 
         
         
@@ -45,7 +47,7 @@ def connect_four_mm(contents, turn, max_depth):
 
     head_node = Node(turn, new_state)
 
-    create_tree(head_node, turn)
+    create_tree(head_node, turn, max_depth)
     
     values, nodes_examined = true_mn(head_node, 0)
     
