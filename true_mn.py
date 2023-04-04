@@ -3,17 +3,23 @@ from tree import Node
 def true_mn(node: Node, nodes_examined, maximizing = True):
    nodes_examined += 1
    if node.root == True:
-        return f'{node.EVALUATION(node.state)}{nodes_examined}'
+        return node.EVALUATION(node.state),nodes_examined
+   game_ended = node.UTILITY(node.state)
+   if game_ended > 0:
+        return game_ended, nodes_examined
    if maximizing == True:
-        value = float('- inf')
+        value = -float('inf')
+        print(node.children)
         for child in node.children:
-             value = max(value, true_mn(child, False))
-        return value
+             valueA, nodes_examined = true_mn(child, nodes_examined, False)
+             value = max(value,valueA)
+        return value, nodes_examined
    if maximizing == False:
         value = float('inf')
         for child in node.children:
-             value = min(value, true_mn(child, True))
-        return value
+             ValueA, nodes_examined = true_mn(child,nodes_examined, True)
+             value = min(value, ValueA)
+        return value, nodes_examined 
 
 
 def true_ab_pruning(node: Node, depth, alpha, beta):

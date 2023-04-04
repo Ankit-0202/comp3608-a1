@@ -27,10 +27,12 @@ class Node:
         child.parent = self
         
     def UTILITY(self, state):
-        if self.NUM_IN_A_ROW(self, state, 4, 'r') > 0:
+        if self.NUM_IN_A_ROW(state, 4, 'r') > 0:
             return 10000
-        if self.NUM_IN_A_ROW(self, state, 4, 'y') > 0:
+        elif self.NUM_IN_A_ROW(state, 4, 'y') > 0:
             return -10000
+        else:
+            return 0
         
     def EVALUATION(self, state):
         return self.SCORE(state, 'r') - self.SCORE(state, 'y')
