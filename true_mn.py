@@ -3,6 +3,7 @@ from tree1 import Node
 lock_and_key = [0, 0]
 
 def true_mn(node: Node, nodes_examined, depth, maximizing = True):
+     nodes_examined = nodes_examined + 1
      if depth == 0:
           game_ended = node.UTILITY(node.state)
           if game_ended != 0:
@@ -22,7 +23,7 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
      if maximizing == True:
           value = -float('inf')
           for child in node.children:
-               column,valueA, nodes_examined = true_mn(child, nodes_examined + 1, depth - 1, False)
+               column,valueA, nodes_examined = true_mn(child, nodes_examined, depth - 1, False)
                child.score = valueA
                value = max(value,valueA)
           return column, value, nodes_examined
@@ -30,14 +31,15 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
      if maximizing == False:
           value = float('inf')
           for child in node.children:
-               column, valueA, nodes_examined = true_mn(child,nodes_examined + 1, depth - 1, True)
+               column, valueA, nodes_examined = true_mn(child,nodes_examined, depth - 1, True)
                child.score = valueA
                value = min(value, valueA)
           return column, value, nodes_examined 
 
 
 def true_ab_pruning(node: Node, depth, alpha, beta):
-     if node.root == True:
+     nodes_examined = nodes_examined + 1
+     if depth == 0:
           return node.EVALUATION(node.state)
      for child in node.children:
           alpha = max(alpha, -true_ab_pruning(child, depth - 1, -beta, -alpha))
