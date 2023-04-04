@@ -1,6 +1,8 @@
 from tree import Node
 
 def true_mn(node: Node, nodes_examined, depth, maximizing = True):
+   
+   print(node.root)
    nodes_examined = nodes_examined + 1
    if node.root == True:
         game_ended = node.UTILITY(node.state)
@@ -11,8 +13,7 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
    game_ended = node.UTILITY(node.state)
    if game_ended > 0:
         return game_ended, nodes_examined
-   
-   
+
    if maximizing == True:
         value = -float('inf')
         for child in node.children:
