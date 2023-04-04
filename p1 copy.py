@@ -53,13 +53,13 @@ def connect_four_mm(contents, turn, max_depth):
     print(head_node.children[0].player)
 
     
-    node, values, nodes_examined = true_mn(head_node, 0, max_depth)
+    column, values, nodes_examined = true_mn(head_node, 0, max_depth)
     
 
 
     
     print("hi")
-    print(f'{values}\n{nodes_examined}')
+    print(f'{column}\n{nodes_examined}')
     print("bye")
 
     return ''
@@ -79,4 +79,4 @@ def get_valid_moves(board):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    connect_four_mm(".ryyrry,.rryry.,..y.r..,..y....,.......,.......", "red", 4)
+    connect_four_mm("......r,......r,......r,...y...,...y...,...yy..", "red", 4)
