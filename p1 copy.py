@@ -12,9 +12,6 @@ def create_tree(node: Node, turn, max_depth):
         #Base Case
         if node.depth == max_depth:
             return
-        
-        # Create the children
-        children = []
 
         possible_moves_from_start = get_valid_moves(node.state)
         for m in possible_moves_from_start:
@@ -26,7 +23,6 @@ def create_tree(node: Node, turn, max_depth):
                 node.add_child(child, m[1])
                 child.make_move(m[0], m[1])
                 child.depth = node.depth + 1
-                print(child.UTILITY(child.state))
                 if (child.UTILITY(child.state) != 0):
                     break
                 for j in child.state:
@@ -57,7 +53,7 @@ def connect_four_mm(contents, turn, max_depth):
     print(head_node.children[0].player)
 
     
-    values, nodes_examined = true_mn(head_node, 0, max_depth)
+    node, values, nodes_examined = true_mn(head_node, 0, max_depth)
     
    
 
