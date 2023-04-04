@@ -126,5 +126,5 @@ class Node:
                     
         self.root = True
         
-    def get_column(self):
+    # def get_column(self):
         # index = self.parent.children.index(MyClass(20))
