@@ -1,5 +1,6 @@
 from tree1 import Node
-from true_mn import true_mn
+import true_mn
+from true_mn import get_lak, true_mn
 # from time import sleep
 
 def input_to_string(str):
@@ -65,6 +66,10 @@ def connect_four_mm(contents, turn, max_depth):
     # print(head_node.children[0].player)
     
     column, values, nodes_examined = true_mn(head_node, 0, max_depth)
+    
+    columnr = get_lak()
+    
+    column = columnr[0]
 
     
     print("hi")
