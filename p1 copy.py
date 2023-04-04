@@ -37,6 +37,17 @@ def create_tree(node: Node, turn, max_depth):
 
 
 
+def get_valid_moves(board):
+    valid_moves = []
+    for col in range(len(board[0])):
+        for row in range(len(board)-1, -1, -1):
+            if board[row][col] == '.':
+                valid_moves.append((row, col))
+                break
+    return valid_moves
+
+
+
 def connect_four_mm(contents, turn, max_depth):
     
     new_state = input_to_string(contents)
@@ -56,24 +67,11 @@ def connect_four_mm(contents, turn, max_depth):
     column, values, nodes_examined = true_mn(head_node, 0, max_depth)
 
     
-
-
-    
     print("hi")
     print(f'{column}\n{nodes_examined}')
     print("bye")
 
     return ''
-
-
-def get_valid_moves(board):
-    valid_moves = []
-    for col in range(len(board[0])):
-        for row in range(len(board)-1, -1, -1):
-            if board[row][col] == '.':
-                valid_moves.append((row, col))
-                break
-    return valid_moves
 
 
 
