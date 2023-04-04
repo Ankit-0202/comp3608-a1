@@ -6,29 +6,29 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
      if depth == 0:
           game_ended = node.UTILITY(node.state)
           if game_ended != 0:
-               return node, node.UTILITY(node.state), nodes_examined
+               return  get_best_column(node, maximizing), node.UTILITY(node.state), nodes_examined
           else:
-               return node, node.EVALUATION(node.state),nodes_examined
+               return  get_best_column(node, maximizing), node.EVALUATION(node.state),nodes_examined
    
      game_ended = node.UTILITY(node.state)
-     if game_ended > 0:
-          return node, game_ended, nodes_examined
+     if game_ended != 0:
+          return get_best_column(node, maximizing), game_ended, nodes_examined
      
      if maximizing == True:
           value = -float('inf')
           for child in node.children:
-               node, valueA, nodes_examined = true_mn(child, nodes_examined, depth - 1, False)
+               column,valueA, nodes_examined = true_mn(child, nodes_examined, depth - 1, False)
                value  = max(value,valueA)
                child.score = value
-          return node, value, nodes_examined
+          return column, value, nodes_examined
      
      if maximizing == False:
           value = float('inf')
           for child in node.children:
-               node,valueA, nodes_examined = true_mn(child,nodes_examined, depth - 1, True)
+               column, node,valueA, nodes_examined = true_mn(child,nodes_examined, depth - 1, True)
                value = min(value, valueA)
                child.score = value
-          return node, value, nodes_examined 
+          return column, value, nodes_examined 
 
 
 def true_ab_pruning(node: Node, depth, alpha, beta):
