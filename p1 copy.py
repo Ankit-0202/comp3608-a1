@@ -7,33 +7,35 @@ def input_to_string(str):
     new_input = [[*i] for i in list]
     return new_input[::-1]
 
-def create_tree(node: Node, turn, max_depth):
-        sleep(1)
 
-        if node.depth >= max_depth:
+def create_tree(node: Node, turn, max_depth):
+        #Base Case
+        if node.depth == max_depth:
             return
         
+        # Create the children
         children = []
-        for i in range(0, 7):
-            if node.state[0][i] != '.':
-                continue
-            # new_node
-            child = Node(turn, node.state)
-            
-            node.add_child(child, i)
-            print(f'hello{i}')
-            child.make_move(i)
-            child.depth = node.depth + 1
-            
-            print(f"\nRe:{child.depth}\n")
-            print(turn)
-            for j in child.state:
-                print(j)
-            if child.root == False:
-                if turn == 'r':
-                    children+=create_tree(child, 'y', max_depth)
-                if turn == 'y':
-                    children+=create_tree(child, 'r', max_depth)
+
+        possible_moves_from_start = get_valid_moves(node.state)
+        for m in possible_moves_from_start:
+            if m == None:
+                if node.check_full():
+                    return
+            else:
+                child = Node(turn, node.state)
+                node.add_child(child, m[1])
+                child.make_move(m[0], m[1])
+                child.depth = node.depth + 1
+                print(child.UTILITY(child.state))
+                if (child.UTILITY(child.state) != 0):
+                    break
+                for j in child.state:
+                    print(j)
+                if child.root == False:
+                    if turn == 'r':
+                       create_tree(child, 'y', max_depth)
+                    if turn == 'y':
+                       create_tree(child, 'r', max_depth)
 
         
         
@@ -49,20 +51,32 @@ def connect_four_mm(contents, turn, max_depth):
 
     head_node = Node(turn, new_state)
 
+
     create_tree(head_node, turn, max_depth)
+
+    print(head_node.children[0].player)
+
     
-    values, nodes_examined = true_mn(head_node, 0)
+    values, nodes_examined = true_mn(head_node, 0, max_depth)
     
    
 
     
     print("hi")
-    print(f'{values}\n{nodes_examined}')
+    #print(f'{values}\n{nodes_examined}')
     print("bye")
 
     return ''
 
 
+def get_valid_moves(board):
+    valid_moves = []
+    for col in range(len(board[0])):
+        for row in range(len(board)-1, -1, -1):
+            if board[row][col] == '.':
+                valid_moves.append((row, col))
+                break
+    return valid_moves
 
 
 
