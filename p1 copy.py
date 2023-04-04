@@ -9,7 +9,8 @@ def input_to_string(str):
 
 
 def create_tree(node: Node, turn, max_depth):
-        #Base Case
+    
+        # Base Case
         if node.depth == max_depth:
             return
 
