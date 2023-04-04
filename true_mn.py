@@ -1,8 +1,9 @@
 from tree import Node
 
-def true_mn(node: Node, maximizing = True):
+def true_mn(node: Node, nodes_examined, maximizing = True):
+   nodes_examined += 1
    if node.root == True:
-        return node.EVALUATION(node.state)
+        return f'{node.EVALUATION(node.state)}{nodes_examined}'
    if maximizing == True:
         value = float('- inf')
         for child in node.children:
