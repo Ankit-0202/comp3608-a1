@@ -1,9 +1,7 @@
 from tree1 import Node
-from true_mn import true_mn
+import true_mn
+from true_mn import get_lak, true_mn
 # from time import sleep
-
-lock_and_key = [0, 0]
-
 
 def input_to_string(str):
     list = str.split(",")
@@ -67,12 +65,11 @@ def connect_four_mm(contents, turn, max_depth):
 
     # print(head_node.children[0].player)
     
-    values, nodes_examined = true_mn(head_node, 0, max_depth)
-
-    get_best_column(node, node.score),
-
+    column, values, nodes_examined = true_mn(head_node, 0, max_depth)
     
-    column = get_best_column(head_node, head_node.score),
+    columnr = get_lak()
+    
+    column = columnr[0]
 
     
     # print("hi")
@@ -82,30 +79,6 @@ def connect_four_mm(contents, turn, max_depth):
     return f'{column}\n{nodes_examined + 1}'
 
 
-def get_best_column(node: Node, value):
-     # print("Value:", value)
-     scores = [0 for _ in range(7)]
-     count = 0
-     for child in node.children:
-          if child != 0:
-               scores[count] = child.score
-               # print(scores[count])
-               count += 1
-          # print("Scores:", scores)        
-     # print("Index:", scores.index(value))     
-               
-     return scores.index(value)
-               
-     
-     # if maximizing == False:
-     #      return scores.index(value)
-
-     # if maximizing == True:
-     #      return scores.index(value)
-     
-def get_lak():
-     global lock_and_key
-     return lock_and_key
 
 
 if __name__ == '__main__':
