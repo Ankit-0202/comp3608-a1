@@ -1,0 +1,89 @@
+Testing a first example. We called your function like this:
+>>> connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 1)
+Your function returned:
+\n1'
+'0\n1'
+when it was meant to return:
+'0\n8'
+'0\n8'
+Testing a second example. We called your function like this:
+connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 2)
+>>> connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 2)
+Your function returned:
+'0\n1'
+'0\n1'
+when it was meant to return:
+'0\n57'
+Testing a third example. We called your function like this:
+>>> connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 3)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'0\n400'
+Testing a fourth example. We called your function like this:
+>>> connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 4)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'0\n2801'
+Testing a fifth example. We called your function like this:
+>>> connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 5)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'0\n19608'
+Testing a sixth example. We called your function like this:
+>>> connect_four_mm("..y.r..,..y.r..,.......,.......,.......,.......", "red", 1)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'4\n8'
+Testing a seventh example. We called your function like this:
+>>> connect_four_mm("..y.r..,..y.r..,.......,.......,.......,.......", "yellow", 1)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'2\n8'
+Testing an eighth example. We called your function like this:
+>>> connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 1)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'4\n8'
+Testing a ninth example. We called your function like this:
+>>> connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 2)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'4\n50'
+Testing a tenth example. We called your function like this:
+>>> connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 3)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'4\n309'
+Testing an eleventh example. We called your function like this:
+>>> connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 1)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'6\n8'
+Testing a twelth example. We called your function like this:
+>>> connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 2)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'6\n50'
+Testing a thirteenth example. We called your function like this:
+>>> connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 3)
+Your function returned:
+'0\n1'
+when it was meant to return:
+'0\n344'
+Running the first hidden test.
+Running the second hidden test.
+Running the third hidden test.
+Running the fourth hidden test.
+Running the fifth hidden test.
+Running the sixth hidden test.
+Running the seventh hidden test.
