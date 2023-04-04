@@ -47,16 +47,16 @@ def true_ab_pruning(node: Node, depth, alpha, beta):
 
 
 def get_best_column(node: Node, value):
-     print("Value:", value)
+     # print("Value:", value)
      scores = [0 for _ in range(7)]
      count = 0
      for child in node.children:
           if child != 0:
                scores[count] = child.score
-               print(scores[count])
+               # print(scores[count])
                count += 1
-          print("Scores:", scores)        
-     print("Index:", scores.index(value))     
+          # print("Scores:", scores)        
+     # print("Index:", scores.index(value))     
                
      return scores.index(value)
                

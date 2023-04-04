@@ -72,11 +72,11 @@ def connect_four_mm(contents, turn, max_depth):
     column = columnr[0]
 
     
-    print("hi")
-    print(f'{column}\n{nodes_examined}')
-    print("bye")
+    # print("hi")
+    # print(f'{column}\n{nodes_examined}')
+    # print("bye")
 
-    return ''
+    return f'{column}\n{nodes_examined}'
 
 
 
