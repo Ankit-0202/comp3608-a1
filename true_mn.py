@@ -17,14 +17,14 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
           for child in node.children:
                node, valueA, nodes_examined = true_mn(child, nodes_examined, depth - 1, False)
                value  = max(value,valueA)
-               node.score = value
+               child.score = value
           return node, value, nodes_examined
      if maximizing == False:
           value = float('inf')
           for child in node.children:
                node,valueA, nodes_examined = true_mn(child,nodes_examined, depth - 1, True)
                value = min(value, valueA)
-               node.score = value
+               child.score = value
           return node, value, nodes_examined 
 
 
