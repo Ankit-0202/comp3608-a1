@@ -1,10 +1,13 @@
 from tree1 import Node
 
-def true_mn(node: Node, nodes_examined, depth, stop_flag = False, maximizing = True):
+globalarr = ["hi"]
+
+def true_mn(node: Node, nodes_examined, depth, maximizing = True):
+     global globalarr
      if depth == 0:
           game_ended = node.UTILITY(node.state)
           if game_ended != 0:
-               print("Let me know where") 
+               
                return get_best_column(node, node.score), node.UTILITY(node.state), nodes_examined
           else:
                return "a", node.EVALUATION(node.state),nodes_examined
