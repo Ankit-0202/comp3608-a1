@@ -1,4 +1,4 @@
-from tree1 import Node
+from tree import Node
 
 lock_and_key = [0, 0]
 

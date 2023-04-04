@@ -1,7 +1,6 @@
-from tree1 import Node
+from tree import Node
 import true_mn
 from true_mn import get_lak, true_mn, true_ab_pruning
-# from time import sleep
 
 def input_to_string(str):
     list = str.split(",")
