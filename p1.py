@@ -33,7 +33,7 @@ def create_tree(node: Node, turn, max_depth):
             if turn == 'r':
                 scores.append(create_tree(child, 'y', max_depth))
             if turn == 'y':
-                create_tree(child, 'r')
+                scores.append(create_tree(child, 'r', max_depth))
 
         
         

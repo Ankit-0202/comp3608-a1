@@ -105,9 +105,9 @@ class Node:
         if count != 0:
             
             if n == 2:
-                count = count - self.NUM_IN_A_ROW(self, arr, 4, char)*3 - self.NUM_IN_A_ROW(self, arr, 3, char)*2
+                count = count - self.NUM_IN_A_ROW(arr, 4, char)*3 - self.NUM_IN_A_ROW(arr, 3, char)*2
             if n == 3:
-                count = count - self.NUM_IN_A_ROW(self, arr, 4, char)*2
+                count = count - self.NUM_IN_A_ROW(arr, 4, char)*2
         
         return count
     
