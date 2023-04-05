@@ -99,7 +99,7 @@ def connect_four_mm(contents, turn, max_depth):
     head_node = Node(turn, state)
 
 
-    create_tree(head_node, turn, max_depth)
+    #create_tree(head_node, turn, max_depth)
 
     # print(head_node.children[0].player)
     

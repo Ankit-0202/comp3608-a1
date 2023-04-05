@@ -27,13 +27,13 @@ def true_mn(node: Node, nodes_examined, depth, max_depth, maximizing = True):
                
                if (lock_and_key[1] == 0):
                     lock_and_key = [get_best_column(node, node.score), 1]
+                    print( node.UTILITY(nodes_examined))
                
                return get_best_column(node, node.score), node.UTILITY(node.state), nodes_examined
           return -1, node.EVALUATION(node.state),nodes_examined
      
      scores = []
 
-   
      game_ended = node.UTILITY(node.state)
      if game_ended != 0:
           return -1, game_ended, nodes_examined
