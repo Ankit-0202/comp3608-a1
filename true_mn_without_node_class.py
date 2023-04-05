@@ -2,15 +2,16 @@ from tree_without_class import *
 
 
 lock_and_key = [0, 0]
-
+values = []
 
 
 def true_mn(state, nodes_examined, depth, maximizing = True):
+     global values
      nodes_examined = nodes_examined + 1
      if depth == 0:
           game_ended = UTILITY(state)
           if game_ended != 0:
-               return get_best_column(node, node.score), node.UTILITY(node.state), nodes_examined
+               return get_best_column(node, node.score), UTILITY(state), nodes_examined
           return -1, EVALUATION(state),nodes_examined
    
      game_ended = UTILITY(state)
@@ -20,7 +21,7 @@ def true_mn(state, nodes_examined, depth, maximizing = True):
           value = -float('inf')
           for child in node.children:
                column,valueA, nodes_examined = true_mn(child, nodes_examined, depth - 1, False)
-               valueA
+               values.append(valueA)
                value = max(value,valueA)
           return column, value, nodes_examined
      
@@ -33,7 +34,7 @@ def true_mn(state, nodes_examined, depth, maximizing = True):
           return column, value, nodes_examined 
 
 
-def true_ab_pruning(node: Node, nodes_examined, depth, alpha, beta, maximizing = True):
+def true_ab_pruning(nodes_examined, depth, alpha, beta, maximizing = True):
      nodes_examined = nodes_examined + 1
      if depth == 0:
                game_ended = node.UTILITY(node.state)
