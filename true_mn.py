@@ -92,12 +92,12 @@ def get_best_column(node: Node, value):
                
      return scores.index(value)
      
-     
      # if maximizing == False:
      #      return scores.index(value)
 
      # if maximizing == True:
      #      return scores.index(value)
+     
      
 def get_lak():
      global lock_and_key
