@@ -6,7 +6,7 @@ class Node:
     depth = 0
     player = 0
     score = 0
-    children = [0,0,0,0,0,0,0]
+    children =             [0,0,0,0,0,0,0]
     parent = None
     
     state = [[".",".",".",".",".",".","."],
