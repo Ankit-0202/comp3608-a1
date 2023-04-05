@@ -63,7 +63,8 @@ def connect_four_ab(contents, turn, max_depth):
     
     alpha = -float('inf')
     beta = float('inf')
-    column, values, nodes_examined = true_ab_pruning(head_node, 0, max_depth, alpha, beta)
+    values = true_ab_pruning(head_node, 0, max_depth, alpha, beta)
+    
     
     columnr = get_lak()
     
@@ -74,7 +75,7 @@ def connect_four_ab(contents, turn, max_depth):
     # print(f'{column}\n{nodes_examined}')
     # print("bye")
 
-    return f'{column}\n{nodes_examined}'
+    #return f'{column}\n{nodes_examined}'
 
 
 def connect_four_mm(contents, turn, max_depth):
@@ -93,7 +94,7 @@ def connect_four_mm(contents, turn, max_depth):
 
     # print(head_node.children[0].player)
     
-    column, values, nodes_examined = true_mn(head_node, 0, max_depth)
+    values = true_mn(head_node, 0, max_depth)
     
     columnr = get_lak()
     
@@ -104,7 +105,7 @@ def connect_four_mm(contents, turn, max_depth):
     # print(f'{column}\n{nodes_examined}')
     # print("bye")
 
-    return f'{column}\n{nodes_examined + 1}'
+    #return f'{column}\n{nodes_examined + 1}'
 
 
 
