@@ -38,7 +38,6 @@ def create_tree(node: Node, turn, max_depth):
                         create_tree(child, 'r', max_depth)
 
 
-
 def get_valid_moves(board):
     valid_moves = []
     for col in range(len(board[0])):
