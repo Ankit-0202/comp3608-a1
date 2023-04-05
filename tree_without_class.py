@@ -9,13 +9,13 @@ def UTILITY(state):
     else:
         return 0
 
-def EVALUATION(self, state):
-    return self.SCORE(state, 'r') - self.SCORE(state, 'y')
+def EVALUATION(state):
+    return SCORE(state, 'r') - SCORE(state, 'y')
 
-def SCORE(self, state, player):
-    val = self.count_tokens(state, player) + 10 * self.NUM_IN_A_ROW(state, 2, player) + \
-            100 * self.NUM_IN_A_ROW(state, 3, player) + \
-            1000 * self.NUM_IN_A_ROW(state, 4, player)
+def SCORE(state, player):
+    val = count_tokens(state, player) + 10 * NUM_IN_A_ROW(state, 2, player) + \
+            100 * NUM_IN_A_ROW(state, 3, player) + \
+            1000 * NUM_IN_A_ROW(state, 4, player)
     return val
 
 def count_tokens(state, item):

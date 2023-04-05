@@ -1,32 +1,26 @@
-from tree import Node
+from tree_without_class import *
 
 
 lock_and_key = [0, 0]
 
 
 
-def true_mn(node: Node, nodes_examined, depth, maximizing = True):
+def true_mn(state, nodes_examined, depth, maximizing = True):
      nodes_examined = nodes_examined + 1
      if depth == 0:
-          game_ended = node.UTILITY(node.state)
+          game_ended = UTILITY(state)
           if game_ended != 0:
-               
-               global lock_and_key
-               
-               if (lock_and_key[1] == 0):
-                    lock_and_key = [get_best_column(node, node.score), 1]
-               
                return get_best_column(node, node.score), node.UTILITY(node.state), nodes_examined
-          return -1, node.EVALUATION(node.state),nodes_examined
+          return -1, EVALUATION(state),nodes_examined
    
-     game_ended = node.UTILITY(node.state)
+     game_ended = UTILITY(state)
      if game_ended != 0:
           return -1, game_ended, nodes_examined
      if maximizing == True:
           value = -float('inf')
           for child in node.children:
                column,valueA, nodes_examined = true_mn(child, nodes_examined, depth - 1, False)
-               child.score = valueA
+               valueA
                value = max(value,valueA)
           return column, value, nodes_examined
      

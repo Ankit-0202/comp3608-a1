@@ -1,4 +1,4 @@
-from hi import *
+from tree_without_class import *
 import true_mn
 from true_mn import get_lak, true_mn, true_ab_pruning
 
