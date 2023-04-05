@@ -15,6 +15,7 @@ def create_tree(node: Node, turn, max_depth):
             return
 
         possible_moves_from_start = get_valid_moves(node.state)
+        print(possible_moves_from_start)
         for m in possible_moves_from_start:
             if m == None:
                 if node.check_full():
