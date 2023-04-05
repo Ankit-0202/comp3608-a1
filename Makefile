@@ -1,4 +1,5 @@
 a:
+	rm -rf __pycache__
 	git add -A
 	git commit -m 'Ankit pushed'
 	git push
