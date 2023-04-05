@@ -6,7 +6,7 @@ class Node:
     depth = 0
     player = 0
     score = 0
-    children =             [0,0,0,0,0,0,0]
+    children =             [None,None,None,None,None,None,None]
     parent = None
     
     column = 0
@@ -142,3 +142,17 @@ class Node:
         new_state[row][column] = str(player)
 
         return new_state
+
+    def preorder_traversal(self, score):
+        """
+        Self-made method: Performs a preorder traversal to find imbalance
+        """
+
+        total += self.weight
+        
+        for child in self.children:
+
+            if child.score != None:
+                total = child.preorder_traversal(total)
+
+        return total
