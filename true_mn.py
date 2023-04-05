@@ -1,6 +1,9 @@
 from tree import Node
 
+
 lock_and_key = [0, 0]
+
+
 
 def true_mn(node: Node, nodes_examined, depth, maximizing = True):
      nodes_examined = nodes_examined + 1
@@ -88,7 +91,7 @@ def get_best_column(node: Node, value):
      # print("Index:", scores.index(value))     
                
      return scores.index(value)
-               
+     
      
      # if maximizing == False:
      #      return scores.index(value)
