@@ -6,6 +6,9 @@ lock_and_key = [0, 0]
 
 
 def true_mn(node: Node, nodes_examined, depth, maximizing = True):
+     
+     print("Depth: ", depth)
+     
      nodes_examined = nodes_examined + 1
      if depth == 0:
           game_ended = node.UTILITY(node.state)
