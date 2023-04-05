@@ -24,7 +24,7 @@ def create_tree(node: Node, turn, max_depth):
                 child = Node(turn, new_state)
                 node.add_child(child, m[1])
                 child.make_move(m[0], m[1])
-                child.depth = node.depth + 1
+                child.depth = child.parent.depth + 1
                 if (child.UTILITY(child.state) != 0):
                     break
                 # for j in child.state:
