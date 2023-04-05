@@ -1,4 +1,4 @@
-from tree_without_class import *
+from without_node_classes.tree_without_class import *
 
 
 lock_and_key = [0, 0]

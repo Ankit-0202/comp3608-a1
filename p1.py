@@ -104,7 +104,7 @@ def connect_four_mm(contents, turn, max_depth):
 
     # print(head_node.children[0].player)
     
-    column, values, nodes_examined = true_mn(head_node, 0, max_depth)
+    column, values, nodes_examined = true_mn(head_node, 0, max_depth, max_depth)
     
     columnr = get_lak()
     
