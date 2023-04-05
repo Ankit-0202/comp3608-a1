@@ -15,11 +15,11 @@ def true_mn(node: Node, nodes_examined, depth, maximizing = True):
                
                return get_best_column(node, node.score), node.UTILITY(node.state), nodes_examined
           else:
-               return "a", node.EVALUATION(node.state),nodes_examined
+               return -1, node.EVALUATION(node.state),nodes_examined
    
      game_ended = node.UTILITY(node.state)
      if game_ended != 0:
-          return 0, game_ended, nodes_examined
+          return -1, game_ended, nodes_examined
      if maximizing == True:
           value = -float('inf')
           for child in node.children:
