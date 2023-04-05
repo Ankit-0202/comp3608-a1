@@ -58,7 +58,7 @@ def connect_four_ab(contents, turn, max_depth):
 
     head_node = Node(turn, new_state)
 
-    create_tree(head_node, turn, max_depth)
+    #create_tree(head_node, turn, max_depth)
 
     # print(head_node.children[0].player)
     
@@ -90,11 +90,11 @@ def connect_four_mm(contents, turn, max_depth):
     head_node = Node(turn, new_state)
 
 
-    create_tree(head_node, turn, max_depth)
+    #create_tree(head_node, turn, max_depth)
 
     # print(head_node.children[0].player)
     
-    column, values, nodes_examined = true_mn(head_node, 0, max_depth)
+    column, values, nodes_examined = true_mn(head_node, -1, 0, max_depth, head_node)
     
     columnr = get_lak()
     
