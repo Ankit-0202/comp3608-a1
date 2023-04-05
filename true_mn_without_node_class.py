@@ -34,7 +34,7 @@ def true_mn(state, nodes_examined, depth, maximizing = True):
           return column, value, nodes_examined 
 
 
-def true_ab_pruning(node: Node, nodes_examined, depth, alpha, beta, maximizing = True):
+def true_ab_pruning(nodes_examined, depth, alpha, beta, maximizing = True):
      nodes_examined = nodes_examined + 1
      if depth == 0:
                game_ended = node.UTILITY(node.state)
