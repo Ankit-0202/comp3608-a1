@@ -4,6 +4,7 @@ a:
 	git push
 
 k:
+	rm -rf __pycache__
 	git add -A
 	git commit -m 'Kory pushed'
 	git push
