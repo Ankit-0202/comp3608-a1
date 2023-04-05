@@ -6,8 +6,10 @@ class Node:
     depth = 0
     player = 0
     score = 0
-    children =        [0,0,0,0,0,0,0]
+    children =             [0,0,0,0,0,0,0]
     parent = None
+    
+    column = 0
     
     state = [[".",".",".",".",".",".","."],
              [".",".",".",".",".",".","."],
@@ -26,6 +28,7 @@ class Node:
         
         self.children[column] = child
         child.parent = self
+        child.column = column
         
     def UTILITY(self, state):
         if self.NUM_IN_A_ROW(state, 4, 'r') > 0:
