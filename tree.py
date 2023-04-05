@@ -52,68 +52,7 @@ class Node:
                 if element == item:
                     count += 1
         return count
-    
-    
-    def NUM_IN_A_ROW(self, arr, n, char):
 
-        count = 0
-            
-        # check rows
-        for row in arr:
-            consecutive_count = 0
-            for i in range(len(row)):
-                if row[i] == char:
-                    consecutive_count += 1
-                    if consecutive_count == n:
-                        count += 1
-                        consecutive_count = 0
-                else:
-                    consecutive_count = 0
-        
-        # check columns
-        for j in range(len(arr[0])):
-            consecutive_count = 0
-            for i in range(len(arr)):
-                if arr[i][j] == char:
-                    consecutive_count += 1
-                    if consecutive_count == n:
-                        count += 1
-                        consecutive_count = 0
-                else:
-                    consecutive_count = 0
-        
-        # check diagonals
-        for i in range(len(arr)):
-            for j in range(len(arr[0])):
-                if i + n <= len(arr) and j + n <= len(arr[0]):
-                    # check diagonal from top-left to bottom-right
-                    consecutive_count = 0
-                    for k in range(n):
-                        if arr[i+k][j+k] == char:
-                            consecutive_count += 1
-                            if consecutive_count == n:
-                                count += 1
-                                consecutive_count = 0
-                        else:
-                            consecutive_count = 0
-                            
-                    # check diagonal from bottom-left to top-right
-                    consecutive_count = 0
-                    for k in range(n):
-                        if arr[i+n-1-k][j+k] == char:
-                            consecutive_count += 1
-                            if consecutive_count == n:
-                                count += 1
-                                consecutive_count = 0
-        
-        if count != 0:
-            
-            if n == 2:
-                count = count - self.NUM_IN_A_ROW(arr, 4, char)*3 - self.NUM_IN_A_ROW(arr, 3, char)*2
-            if n == 3:
-                count = count - self.NUM_IN_A_ROW(arr, 4, char)*2
-        
-        return count
     
     def make_move(self, row, column):
             if self.state[row][column] == '.':
@@ -143,16 +82,81 @@ class Node:
 
         return new_state
 
-    def preorder_traversal(self, score):
-        """
-        Self-made method: Performs a preorder traversal to find imbalance
-        """
+    def NUM_IN_A_ROW(self, arr, count, value):
+    
+        if count == 4:
+            return self.count_in_a_row(arr, count, value)
 
-        total += self.weight
+        # def count_in_a_row(arr, count, value):
+        rows, cols = len(arr), len(arr[0])
+        total = 0
         
-        for child in self.children:
-
-            if child.score != None:
-                total = child.preorder_traversal(total)
-
+        # Check rows
+        for r in range(rows):
+            for c in range(cols - count + 1):
+                if all(arr[r][c+i] == value for i in range(count)) and \
+                (c == 0 or arr[r][c-1] != value) and \
+                (c + count == cols or arr[r][c+count] != value):
+                    total += 1
+        
+        # Check columns
+        for c in range(cols):
+            for r in range(rows - count + 1):
+                if all(arr[r+i][c] == value for i in range(count)) and \
+                (r == 0 or arr[r-1][c] != value) and \
+                (r + count == rows or arr[r+count][c] != value):
+                    total += 1
+        
+        # Check diagonals
+        for r in range(rows - count + 1):
+            for c in range(cols - count + 1):
+                if all(arr[r+i][c+i] == value for i in range(count)) and \
+                (r == 0 or c == 0 or arr[r-1][c-1] != value) and \
+                (r + count == rows or c + count == cols or arr[r+count][c+count] != value):
+                    total += 1
+                
+                if all(arr[r+i][c+count-1-i] == value for i in range(count)) and \
+                (r == 0 or c + count == cols or arr[r-1][c+count] != value) and \
+                (r + count == rows or c == 0 or arr[r+count][c-1] != value):
+                    total += 1
+        
         return total
+
+    def count_in_a_row(self, arr, count, value):
+        rows, cols = len(arr), len(arr[0])
+        total = 0
+        visited = set()
+        
+        # Check rows
+        for r in range(rows):
+            for c in range(cols - count + 1):
+                if all(arr[r][c+i] == value for i in range(count)):
+                    if all((r, c+i) not in visited for i in range(count)):
+                        total += 1
+                        visited.update((r, c+i) for i in range(count))
+        
+        # Check columns
+        for c in range(cols):
+            for r in range(rows - count + 1):
+                if all(arr[r+i][c] == value for i in range(count)):
+                    if all((r+i, c) not in visited for i in range(count)):
+                        total += 1
+                        visited.update((r+i, c) for i in range(count))
+        
+        # Check diagonals
+        for r in range(rows - count + 1):
+            for c in range(cols - count + 1):
+                if all(arr[r+i][c+i] == value for i in range(count)):
+                    if all((r+i, c+i) not in visited for i in range(count)):
+                        total += 1
+                        visited.update((r+i, c+i) for i in range(count))
+                
+                if all(arr[r+i][c+count-1-i] == value for i in range(count)):
+                    if all((r+i, c+count-1-i) not in visited for i in range(count)):
+                        total += 1
+                        visited.update((r+i, c+count-1-i) for i in range(count))
+        
+        return total
+
+
+        
