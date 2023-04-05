@@ -1,4 +1,4 @@
-from tree import Node
+from hi import *
 import true_mn
 from true_mn import get_lak, true_mn, true_ab_pruning
 
@@ -8,34 +8,32 @@ def input_to_string(str):
     return new_input[::-1]
 
 
-def create_tree(node: Node, turn, max_depth):
+def create_tree(depth, state, turn, max_depth, root):
         # Base Case
-        if node.depth == max_depth:
+        if depth == max_depth:
             return
 
-        possible_moves_from_start = get_valid_moves(node.state)
+        possible_moves_from_start = get_valid_moves(state)
         
-        if len(possible_moves_from_start) == 0 or node.check_full():
+        if len(possible_moves_from_start) == 0 or check_full(state):
                 return
 
         for m in possible_moves_from_start:
             if m == None:
-                if node.check_full():
+                if check_full(state):
                     break
             else:
-                new_state = node.simulate_move(m[0], m[1], turn)
-                child = Node(turn, new_state)
-                node.add_child(child, m[1])
-                child.depth = child.parent.depth + 1
-                if (child.UTILITY(child.state) != 0 or child.check_full()):
+                new_state = simulate_move(state, m[0], m[1], turn)
+                depth = depth + 1
+                if (UTILITY(new_state) != 0 or check_full(new_state)):
                     break
-                # for j in child.state:
-                    # print(j)
-                if child.root == False:
+                for j in new_state:
+                    print(j)
+                if root == False:
                     if turn == 'r':
-                        create_tree(child, 'y', max_depth)
+                        create_tree(depth, new_state, 'y', max_depth, root)
                     if turn == 'y':
-                        create_tree(child, 'r', max_depth)
+                        create_tree(depth, new_state, 'r', max_depth, root)
 
 
 
@@ -88,6 +86,10 @@ def connect_four_mm(contents, turn, max_depth):
     if turn == 'red':
         turn = 'r'
 
+    depth = 0
+    player = turn
+    score = 0
+    root = False
     """
     depth = 0
     player = 0
@@ -97,25 +99,24 @@ def connect_four_mm(contents, turn, max_depth):
     column = 0
 
     """
-    head_node = Node(turn, state)
 
-
-    create_tree(head_node, turn, max_depth)
+    create_tree(depth, state, turn, max_depth, root)
+    
 
     # print(head_node.children[0].player)
     
-    column, values, nodes_examined = true_mn(head_node, 0, max_depth)
+    #column, values, nodes_examined = true_mn(head_node, 0, max_depth)
     
-    columnr = get_lak()
+    #columnr = get_lak()
     
-    column = columnr[0]
+    #column = columnr[0]
 
     
     # print("hi")
     # print(f'{column}\n{nodes_examined}')
     # print("bye")
 
-    return f'{column}\n{nodes_examined + 1}'
+    #return f'{column}\n{nodes_examined + 1}'
 
 
 
