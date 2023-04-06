@@ -18,7 +18,7 @@ def connect_four_ab(contents, turn, max_depth):
     alpha = -float('inf')
     beta = float('inf')
 
-    values, nodes_examined = true_ab_pruning(turn, state, 0, max_depth, max_depth, values_array, alpha, beta, maximizing = True)
+    values, nodes_examined = true_ab_pruning(turn, turn, state, 0, max_depth, max_depth, alpha, beta, maximizing = True)
 
 
     return f'{values}\n{nodes_examined}'
@@ -27,4 +27,4 @@ def connect_four_ab(contents, turn, max_depth):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 4))
+    print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 3))
