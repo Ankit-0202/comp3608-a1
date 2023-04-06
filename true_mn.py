@@ -85,7 +85,7 @@ def true_ab_pruning(player, original_player, state, nodes_examined, max_depth, d
                               value = max(value, valueA)
                               if value >= beta:
                                    return value, nodes_examined
-                              alpha = max(valueA, alpha)
+                              alpha = max(value, alpha)
                          else:
                               valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state ,nodes_examined, depth - 1, max_depth, alpha, beta, True)
                               values_array.append(valueA)
