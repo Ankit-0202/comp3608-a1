@@ -1,5 +1,6 @@
 from tree import *
 import true_mn
+import numpy as np
 from true_mn import true_mn
 
 #true_ab_pruning
@@ -40,20 +41,8 @@ def create_tree(node: Node, turn, max_depth):
                         create_tree(child, 'r', max_depth)
 """
 
-def get_valid_moves(board):
-    valid_moves = []
-    for col in range(len(board[0])):
-        for row in range(len(board)-1, -1, -1):
-            if board[row][col] == '.':
-                valid_moves.append((row, col))
-                break
-    return valid_moves
-
-
 def connect_four_mm(contents, turn, max_depth):
 
-    values_array = []
-    
     state = input_to_string(contents)
     
     if turn == 'yellow':

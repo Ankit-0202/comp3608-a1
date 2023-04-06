@@ -81,24 +81,22 @@ def true_ab_pruning(player, original_player, state, nodes_examined, max_depth, d
                          new_state = simulate_move(state, r, c, player)
                          if maximizing == True:
                               valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state, nodes_examined, depth - 1, max_depth, alpha, beta, False)
-                              values_array.append(valueA)
-                              value = max(value, valueA)
-                              if value >= beta:
-                                   return value, nodes_examined
-                              alpha = max(value, alpha)
                          else:
                               valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state ,nodes_examined, depth - 1, max_depth, alpha, beta, True)
-                              values_array.append(valueA)
+                         values_array.append(valueA)
+                         if maximizing == True:
+                              value = max(value, valueA)
+                              alpha = max(value, alpha)
+                         else:
                               value = min(value, valueA)
-                              if value <= alpha:
-                                   return value, nodes_examined
                               beta = min(value, beta)
-               break
-     print(values_array)
-     if depth == max_depth:
-          return values_array.index(valueA), nodes_examined
+                         if alpha >= beta:
+                                   return value, nodes_examined
+                         break
+                    if depth == max_depth:
+                         return values_array.index(value), nodes_examined
      
-     return valueA, nodes_examined
+     return value, nodes_examined
      
 
 

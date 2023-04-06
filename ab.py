@@ -1,4 +1,5 @@
 from true_mn import *
+import numpy as np
 
 def input_to_string(str):
     list = str.split(",")
@@ -6,7 +7,6 @@ def input_to_string(str):
     return new_input
 
 def connect_four_ab(contents, turn, max_depth):
-    values_array = []
     
     state = input_to_string(contents)
     
@@ -20,11 +20,10 @@ def connect_four_ab(contents, turn, max_depth):
 
     values, nodes_examined = true_ab_pruning(turn, turn, state, 0, max_depth, max_depth, alpha, beta, maximizing = True)
 
-
     return f'{values}\n{nodes_examined}'
 
 
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 3))
+    print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 4))
