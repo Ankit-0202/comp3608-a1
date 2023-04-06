@@ -1,4 +1,25 @@
 import copy
+import json
+  
+# reading the data from the file
+# with open('dict.txt') as f:
+#     data = f.read()
+    
+# js = json.loads(data)
+
+js = {}
+
+def set_dict(combs):
+    global js
+    js = combs
+
+def d_string(arr, count, value):
+    result = ""
+    for row in arr:
+        for item in row:
+            result += str(item)
+    result += "," + str(count) + value
+    return result
 
 def EVALUATION(state, player):
         if player == 'r':
@@ -18,45 +39,55 @@ def count_tokens(state, item):
                     count += 1
         return count
 
-
-
 def NUM_IN_A_ROW(arr, count, value):
-        if count == 4:
-            return count_in_a_row(arr, count, value)
+    
+    global js
+    moves_as_string = d_string(arr, count, value)
+    
+    if moves_as_string in js:
+        return js[moves_as_string]
+    
+    
+    if count == 4:
+        return int(count_in_a_row(arr, count, value))
 
-        rows, cols = len(arr), len(arr[0])
-        total = 0
-        
-        # Check rows
-        for r in range(rows):
-            for c in range(cols - count + 1):
-                if all(arr[r][c+i] == value for i in range(count)) and \
-                (c == 0 or arr[r][c-1] != value) and \
-                (c + count == cols or arr[r][c+count] != value):
-                    total += 1
-        
-        # Check columns
-        for c in range(cols):
-            for r in range(rows - count + 1):
-                if all(arr[r+i][c] == value for i in range(count)) and \
-                (r == 0 or arr[r-1][c] != value) and \
-                (r + count == rows or arr[r+count][c] != value):
-                    total += 1
-        
-        # Check diagonals
+    rows, cols = len(arr), len(arr[0])
+    total = 0
+    
+    # Check rows
+    for r in range(rows):
+        for c in range(cols - count + 1):
+            if all(arr[r][c+i] == value for i in range(count)) and \
+            (c == 0 or arr[r][c-1] != value) and \
+            (c + count == cols or arr[r][c+count] != value):
+                total += 1
+    
+    # Check columns
+    for c in range(cols):
         for r in range(rows - count + 1):
-            for c in range(cols - count + 1):
-                if all(arr[r+i][c+i] == value for i in range(count)) and \
-                (r == 0 or c == 0 or arr[r-1][c-1] != value) and \
-                (r + count == rows or c + count == cols or arr[r+count][c+count] != value):
-                    total += 1
+            if all(arr[r+i][c] == value for i in range(count)) and \
+            (r == 0 or arr[r-1][c] != value) and \
+            (r + count == rows or arr[r+count][c] != value):
+                total += 1
+    
+    # Check diagonals
+    for r in range(rows - count + 1):
+        for c in range(cols - count + 1):
+            if all(arr[r+i][c+i] == value for i in range(count)) and \
+            (r == 0 or c == 0 or arr[r-1][c-1] != value) and \
+            (r + count == rows or c + count == cols or arr[r+count][c+count] != value):
+                total += 1
+            
+            if all(arr[r+i][c+count-1-i] == value for i in range(count)) and \
+            (r == 0 or c + count == cols or arr[r-1][c+count] != value) and \
+            (r + count == rows or c == 0 or arr[r+count][c-1] != value):
+                total += 1
                 
-                if all(arr[r+i][c+count-1-i] == value for i in range(count)) and \
-                (r == 0 or c + count == cols or arr[r-1][c+count] != value) and \
-                (r + count == rows or c == 0 or arr[r+count][c-1] != value):
-                    total += 1
-        
-        return total
+                
+    
+    js.update( {moves_as_string : total} )
+    
+    return total
 
 def count_in_a_row(arr, count, value):
         rows, cols = len(arr), len(arr[0])
