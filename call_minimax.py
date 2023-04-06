@@ -16,9 +16,12 @@ def load_dict():
     # Load data from an existing pickle file
     
     pickle_filename = "dict_pickle.pickle"
-    with open('dict_pickle.pickle', 'rb') as handle:
-        combs = pickle.load(handle)
-    return combs
+    try:
+        with open('dict_pickle.pickle', 'rb') as handle:
+            combs = pickle.load(handle)
+        return combs
+    except:
+        return {}
 
 def write_dict(dict):
     with open('dict_pickle.pickle', 'wb') as handle:
