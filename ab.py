@@ -1,29 +1,30 @@
+from true_mn import *
+
+def input_to_string(str):
+    list = str.split(",")
+    new_input = [[*i] for i in list]
+    return new_input
+
 def connect_four_ab(contents, turn, max_depth):
+    values_array = []
     
-    new_state = input_to_string(contents)
+    state = input_to_string(contents)
     
     if turn == 'yellow':
         turn = 'y'
     if turn == 'red':
         turn = 'r'
 
-    head_node = Node(turn, new_state)
-
-    create_tree(head_node, turn, max_depth)
-
-    # print(head_node.children[0].player)
-    
     alpha = -float('inf')
     beta = float('inf')
-    column, values, nodes_examined = true_ab_pruning(head_node, 0, max_depth, alpha, beta)
-    
-    columnr = get_lak()
-    
-    column = columnr[0]
 
-    
-    # print("hi")
-    # print(f'{column}\n{nodes_examined}')
-    # print("bye")
+    values, nodes_examined = true_ab_pruning(turn, state, 0, max_depth, max_depth, values_array, alpha, beta, maximizing = True)
 
-    return f'{column}\n{nodes_examined}'
+
+    return f'{values}\n{nodes_examined}'
+
+
+
+if __name__ == '__main__':
+    # Example function call below, you can add your own to test the connect_four_mm function
+    print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 4))
