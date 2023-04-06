@@ -7,7 +7,7 @@ from true_mn import get_lak, true_mn
 def input_to_string(str):
     list = str.split(",")
     new_input = [[*i] for i in list]
-    return new_input[::-1]
+    return new_input
 
 """
 def create_tree(node: Node, turn, max_depth):
@@ -78,21 +78,17 @@ def connect_four_mm(contents, turn, max_depth):
     
     
     values, nodes_examined = true_mn(turn, state, 0, max_depth, max_depth, values_array)
-    
-    columnr = get_lak()
-    
-    column = columnr[0]
 
     
     # print("hi")
     # print(f'{column}\n{nodes_examined}')
     # print("bye")
 
-    return f'{column}\n{nodes_examined}'
+    return f'{values}\n{nodes_examined}'
 
 
 
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 1))
+    print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 3))
