@@ -1,13 +1,15 @@
-from tree import Node
+from tree import *
 import true_mn
-from true_mn import get_lak, true_mn, true_ab_pruning
+from true_mn import get_lak, true_mn
+
+#true_ab_pruning
 
 def input_to_string(str):
     list = str.split(",")
     new_input = [[*i] for i in list]
     return new_input[::-1]
 
-
+"""
 def create_tree(node: Node, turn, max_depth):
         # Base Case
         if node.depth == max_depth:
@@ -36,7 +38,7 @@ def create_tree(node: Node, turn, max_depth):
                         create_tree(child, 'y', max_depth)
                     if turn == 'y':
                         create_tree(child, 'r', max_depth)
-
+"""
 
 def get_valid_moves(board):
     valid_moves = []
@@ -49,6 +51,8 @@ def get_valid_moves(board):
 
 
 def connect_four_mm(contents, turn, max_depth):
+
+    values_array = []
     
     state = input_to_string(contents)
     
@@ -66,14 +70,14 @@ def connect_four_mm(contents, turn, max_depth):
     column = 0
 
     """
-    head_node = Node(turn, state)
 
 
     #create_tree(head_node, turn, max_depth)
 
     # print(head_node.children[0].player)
     
-    column, values, nodes_examined = true_mn(head_node, 0, max_depth, max_depth)
+    
+    values, nodes_examined = true_mn(turn, state, 0, max_depth, max_depth, values_array)
     
     columnr = get_lak()
     
@@ -84,11 +88,11 @@ def connect_four_mm(contents, turn, max_depth):
     # print(f'{column}\n{nodes_examined}')
     # print("bye")
 
-    return f'{column}\n{nodes_examined + 1}'
+    return f'{column}\n{nodes_examined}'
 
 
 
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 4))
+    print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 1))

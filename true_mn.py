@@ -1,4 +1,5 @@
-from tree import Node
+from tree import *
+import numpy as np
 
 
 lock_and_key = [0, 0]
@@ -12,74 +13,58 @@ def get_valid_moves(board):
                 break
     return valid_moves
 
+def switch_player(player):
+     if player == 'r':
+          player = 'y'
+     else:
+          player = 'r'
+     return player
 
-def true_mn(node: Node, nodes_examined, depth, max_depth, maximizing = True):
-     
-     print("Depth: ", depth)
-     
+
+def true_mn(player, state, nodes_examined, depth, max_depth, values_array, maximizing = True):
      nodes_examined = nodes_examined + 1
+     game_ended = UTILITY(state)
+     if game_ended:
+          return game_ended, nodes_examined
 
      if depth == 0:
-          game_ended = node.UTILITY(node.state)
-          if game_ended != 0:
-               
-               global lock_and_key
-               
-               if (lock_and_key[1] == 0):
-                    lock_and_key = [get_best_column(node, node.score), 1]
-                    print( node.UTILITY(nodes_examined))
-               
-               return get_best_column(node, node.score), node.UTILITY(node.state), nodes_examined
-          return -1, node.EVALUATION(node.state),nodes_examined
+          return EVALUATION(state),nodes_examined
      
-     scores = []
-
-     game_ended = node.UTILITY(node.state)
-     if game_ended != 0:
-          return -1, game_ended, nodes_examined
-     possible_moves_from_start = get_valid_moves(node.state)
      if maximizing == True:
           value = -float('inf')
-          for m in possible_moves_from_start:
-               if m == None:
-                    if node.check_full():
-                         break
-               else:
-                    new_state = node.simulate_move(m[0], m[1], node.player)
-                    child = Node(node.player, new_state)
-                    node.add_child(child, m[1])
-                    child.depth = child.parent.depth + 1
-                    if (child.UTILITY(child.state) != 0 or child.check_full()):
-                         break
-                    for child in node.children:
-                         column,valueA, nodes_examined = true_mn(child, nodes_examined, depth - 1, max_depth, False)
-                         child.score = valueA
-                         value = max(value,valueA)
-                    return column, value, nodes_examined
-     
-     if maximizing == False:
+     else:
           value = float('inf')
-          for m in possible_moves_from_start:
-               if m == None:
-                    if node.check_full():
-                         break
-               else:
-                    new_state = node.simulate_move(m[0], m[1], node.player)
-                    child = Node(node.player, new_state)
-                    node.add_child(child, m[1])
-                    child.depth = child.parent.depth + 1
-                    if (child.UTILITY(child.state) != 0 or child.check_full()):
-                         break
-                    for child in node.children:
-                         column, valueA, nodes_examined = true_mn(child,nodes_examined, depth - 1, max_depth, True)
-                         child.score = valueA
-                         value = min(value, valueA)
-                    return column, value, nodes_examined 
+
+     for c in range(7):
+          for r in range(6):
+               if state[r][c] == '.':
+                    if not check_full(state):
+                         new_state = simulate_move(state, r, c, player)
+                         print(np.matrix(new_state))
+                         print()
+                         if maximizing == True:
+                              valueA, nodes_examined = true_mn(switch_player(player), new_state, nodes_examined, depth - 1, max_depth, values_array, False)
+                         else:
+                              valueA, nodes_examined = true_mn(switch_player(player), new_state ,nodes_examined, depth - 1, max_depth, values_array, True)
+                         values_array.append(valueA)
+                         if maximizing == True:
+                              print(f'Maximize between {value} and {valueA}')
+                              value = max(value,valueA)
+                              print(value)
+                         else:
+                              print(f'Minimize between {value} and {valueA}')
+                              value = min(value, valueA)
+                              print(value)
+                    print(np.matrix(values_array))
+
      
-     if node.depth == max_depth:
-            return
-
-
+     if depth == max_depth:
+            print(values_array.index(value))
+            return values_array.index(value), nodes_examined
+     
+     return value, nodes_examined
+     
+"""
 def true_ab_pruning(node: Node, nodes_examined, depth, alpha, beta, maximizing = True):
      nodes_examined = nodes_examined + 1
      if depth == 0:
@@ -116,10 +101,10 @@ def true_ab_pruning(node: Node, nodes_examined, depth, alpha, beta, maximizing =
                if beta <= alpha:
                     break
           return column, value, nodes_examined 
+"""
 
 
-
-def get_best_column(node: Node, value):
+def get_best_column(Node, value):
      
      temp_node = 0
      
