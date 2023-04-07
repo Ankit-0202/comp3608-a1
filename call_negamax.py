@@ -15,6 +15,8 @@ def input_to_string(str):
 
 def connect_four_negamax(contents, turn):
     
+    # start_time = time.time()
+    
     state = input_to_string(contents)
     
     if turn == 'yellow':
@@ -30,9 +32,27 @@ def connect_four_negamax(contents, turn):
 
     values, nodes_examined = negamax(turn, turn, state, 0, max_depth, max_depth, alpha, beta)
 
+    # end_time = time.time()
+    
+    # print(end_time-start_time)
+
     return f'{values}\n{nodes_examined}'
 
 
 if __name__ == '__main__':
-    # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_negamax(".......,.......,.......,.......,.......,.......", "red"))
+    # Example function call below, you can add your own to test the connect_four_negamax function
+    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "red")
+    connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "yellow")
+    connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
+    connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
+    connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
+    connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
+    connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
+    connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
