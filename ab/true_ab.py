@@ -10,7 +10,6 @@ def switch_player(player):
 
 def true_ab_pruning(player, original_player, state, nodes_examined, max_depth, depth, alpha, beta, maximizing = True):
      nodes_examined = nodes_examined + 1
-     print(NUM_IN_A_ROW(state, 4, 'r'))
      if UTILITY(state):
           return UTILITY(state), nodes_examined
 
