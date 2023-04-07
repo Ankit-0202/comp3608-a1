@@ -19,22 +19,22 @@ def d_string(arr, count, value):
     return result
 
 def EVALUATION(state, player):
-        if player == 'r':
-          return SCORE(state, 'r') - SCORE(state, 'y')
-        elif player == 'y':
-           return SCORE(state, 'y') - SCORE(state, 'r')
+    if player == 'r':
+        return SCORE(state, 'r') - SCORE(state, 'y')
+    elif player == 'y':
+        return SCORE(state, 'y') - SCORE(state, 'r')
 
 def SCORE(state, player):
-        val = count_tokens(state, player) + 10 * NUM_IN_A_ROW(state, 2, player) + 100 * NUM_IN_A_ROW(state, 3, player) + 1000 * NUM_IN_A_ROW(state, 4, player)
-        return val
+    val = count_tokens(state, player) + 10 * NUM_IN_A_ROW(state, 2, player) + 100 * NUM_IN_A_ROW(state, 3, player) + 1000 * NUM_IN_A_ROW(state, 4, player)
+    return val
         
 def count_tokens(state, item):
-        count = 0
-        for row in state:
-            for element in row:
-                if element == item:
-                    count += 1
-        return count
+    count = 0
+    for row in state:
+        for element in row:
+            if element == item:
+                count += 1
+    return count
 
 def NUM_IN_A_ROW(arr, count, value):
     
@@ -87,40 +87,44 @@ def NUM_IN_A_ROW(arr, count, value):
     return total
 
 def count_in_a_row(arr, count, value):
-        rows, cols = len(arr), len(arr[0])
-        total = 0
-        visited = set()
-        
-        # Check rows
-        for r in range(rows):
-            for c in range(cols - count + 1):
-                if all(arr[r][c+i] == value for i in range(count)):
-                    if all((r, c+i) not in visited for i in range(count)):
-                        total += 1
-                        visited.update((r, c+i) for i in range(count))
-        
-        # Check columns
-        for c in range(cols):
-            for r in range(rows - count + 1):
-                if all(arr[r+i][c] == value for i in range(count)):
-                    if all((r+i, c) not in visited for i in range(count)):
-                        total += 1
-                        visited.update((r+i, c) for i in range(count))
-        
-        # Check diagonals
+    rows, cols = len(arr), len(arr[0])
+    total = 0
+    visited = set()
+    
+    # Check rows
+    for r in range(rows):
+        for c in range(cols - count + 1):
+            if all(arr[r][c+i] == value for i in range(count)):
+                if all((r, c+i) not in visited for i in range(count)):
+                    total += 1
+                    visited.update((r, c+i) for i in range(count))
+    
+    # Check columns
+    for c in range(cols):
         for r in range(rows - count + 1):
-            for c in range(cols - count + 1):
-                if all(arr[r+i][c+i] == value for i in range(count)):
-                    if all((r+i, c+i) not in visited for i in range(count)):
-                        total += 1
-                        visited.update((r+i, c+i) for i in range(count))
-                
-                if all(arr[r+i][c+count-1-i] == value for i in range(count)):
-                    if all((r+i, c+count-1-i) not in visited for i in range(count)):
-                        total += 1
-                        visited.update((r+i, c+count-1-i) for i in range(count))
-        
-        return total
+            if all(arr[r+i][c] == value for i in range(count)):
+                if all((r+i, c) not in visited for i in range(count)):
+                    total += 1
+                    visited.update((r+i, c) for i in range(count))
+    
+    # Check diagonals
+    for r in range(rows - count + 1):
+        for c in range(cols - count + 1):
+            if all(arr[r+i][c+i] == value for i in range(count)):
+                if all((r+i, c+i) not in visited for i in range(count)):
+                    total += 1
+                    visited.update((r+i, c+i) for i in range(count))
+            
+            if all(arr[r+i][c+count-1-i] == value for i in range(count)):
+                if all((r+i, c+count-1-i) not in visited for i in range(count)):
+                    total += 1
+                    visited.update((r+i, c+count-1-i) for i in range(count))
+                    
+    moves_as_string = d_string(arr, count, value)
+    global js
+    js.update( {moves_as_string : total} )
+    
+    return total
 
 def check_full(state):
     for row in state:
