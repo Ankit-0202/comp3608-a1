@@ -40,6 +40,7 @@ def true_mn(player, original_player, state, nodes_examined, depth, max_depth, ma
                     break
 
      if depth == max_depth:
+          print(values_array)
           return values_array.index(value), nodes_examined
      
      return value, nodes_examined

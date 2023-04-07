@@ -40,17 +40,17 @@ def connect_four_ab(contents, turn, max_depth):
     set_dict(combs)
     
     
-    
-    
     if turn == 'yellow':
         turn = 'y'
+        maximizing = False
     if turn == 'red':
         turn = 'r'
+        maximizing = True
 
     alpha = -float('inf')
     beta = float('inf')
 
-    values, nodes_examined = true_ab_pruning(turn, turn, state, 0, max_depth, max_depth, alpha, beta, maximizing = True)
+    values, nodes_examined = true_ab_pruning(turn, turn, state, 0, max_depth, max_depth, alpha, beta, maximizing)
     
     write_dict(combs)
 
@@ -60,6 +60,5 @@ def connect_four_ab(contents, turn, max_depth):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_ab("yrryyry,rryrrry, yyryyry,rrryyyr,yyryrry, rryryy.", "red", 4))
-    
+    print(connect_four_ab("..y.r..,..y.r..,.......,.......,.......,.......", "yellow", 1))    
     
