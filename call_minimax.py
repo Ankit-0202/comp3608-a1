@@ -1,5 +1,4 @@
 import pickle
-import os
 
 from helper_functions import *
 from true_mn import *
@@ -8,14 +7,6 @@ combs = {}
 
 def load_dict():
     
-    # if not os.path.exists(pickle_filename):
-    #     # Create a new pickle file
-    #     with open(pickle_filename, "wb") as f:
-    #         return {}
-    # else:
-    # Load data from an existing pickle file
-    
-    pickle_filename = "dict_pickle.pickle"
     try:
         with open('dict_pickle.pickle', 'rb') as handle:
             combs = pickle.load(handle)
@@ -66,8 +57,6 @@ def connect_four_mm(contents, turn, max_depth):
     write_dict(combs)
 
     return f'{values}\n{nodes_examined}'
-
-
 
 
 if __name__ == '__main__':
