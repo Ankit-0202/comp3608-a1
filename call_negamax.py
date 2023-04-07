@@ -1,5 +1,5 @@
 from negamax import negamax
-# import time
+import time
 
 """
 Upon further research, we have decided to use the negamax function, which is a more 
@@ -15,7 +15,7 @@ def input_to_string(str):
 
 def connect_four_negamax(contents, turn):
     
-    # start_time = time.time()
+    start_time = time.time()
     
     state = input_to_string(contents)
     
@@ -27,14 +27,13 @@ def connect_four_negamax(contents, turn):
     alpha = -float('inf')
     beta = float('inf')
 
-    # max_depth = random.randint(1, 4)
     max_depth = 4
 
     values, nodes_examined = negamax(turn, turn, state, 0, max_depth, max_depth, alpha, beta)
 
-    # end_time = time.time()
+    end_time = time.time()
     
-    # print(end_time-start_time)
+    print(end_time-start_time)
 
     return f'{values}\n{nodes_examined}'
 
