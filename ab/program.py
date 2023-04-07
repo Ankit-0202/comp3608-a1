@@ -53,6 +53,9 @@ def connect_four_ab(contents, turn, max_depth):
     values, nodes_examined = true_ab_pruning(turn, turn, state, 0, max_depth, max_depth, alpha, beta, maximizing)
     
     write_dict(combs)
+    
+    if values > 8:
+        return f'0\n{nodes_examined}'
 
     return f'{values}\n{nodes_examined}'
 
