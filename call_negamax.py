@@ -1,4 +1,5 @@
 from negamax import negamax
+from helper_functions import *
 import time
 
 """
@@ -7,6 +8,8 @@ efficient use of the minimax function with alpha-beta pruning, as negamax is mea
 our game of connect four. We have also decided to use the negamax function because it is more efficient. 
 We will also decide to use a random max_depth between 1 and 4 for this case, as it is not being supplied to us. 
 """
+
+combs = {}
 
 def input_to_string(str):
     list = str.split(",")
@@ -40,18 +43,18 @@ def connect_four_negamax(contents, turn):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_negamax function
-    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
     connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "red")
-    connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "yellow")
-    connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
-    connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
-    connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
-    connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
-    connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
-    connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
+    # connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "yellow")
+    # connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
+    # connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
+    # connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
+    # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
+    # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
+    # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
