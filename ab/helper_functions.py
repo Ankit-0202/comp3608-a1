@@ -99,7 +99,6 @@ def count_in_a_row(arr, count, value):
                 if all(arr[r][c+i] == value for i in range(count)):
                     if all((r, c+i) not in visited for i in range(count)):
                         total += 1
-                        print("Hi")
                         visited.update((r, c+i) for i in range(count))
         
         # Check columns
@@ -108,7 +107,6 @@ def count_in_a_row(arr, count, value):
                 if all(arr[r+i][c] == value for i in range(count)):
                     if all((r+i, c) not in visited for i in range(count)):
                         total += 1
-                        print("Hola")
                         visited.update((r+i, c) for i in range(count))
         
         # Check diagonals
@@ -117,13 +115,11 @@ def count_in_a_row(arr, count, value):
                 if all(arr[r+i][c+i] == value for i in range(count)):
                     if all((r+i, c+i) not in visited for i in range(count)):
                         total += 1
-                        print("Let's Go")
                         visited.update((r+i, c+i) for i in range(count))
                 
                 if all(arr[r+i][c+count-1-i] == value for i in range(count)):
                     if all((r+i, c+count-1-i) not in visited for i in range(count)):
                         total += 1
-                        print("I'm Done")
                         visited.update((r+i, c+count-1-i) for i in range(count))
         
         return total
