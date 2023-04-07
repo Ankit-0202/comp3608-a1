@@ -6,6 +6,10 @@ js = {}
 def set_dict(combs):
     global js
     js = combs
+    
+def get_dict():
+    global js
+    return js
 
 def d_string(arr, count, value):
     result = ""
