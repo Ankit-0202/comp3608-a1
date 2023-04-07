@@ -34,7 +34,8 @@ def negamax(player, original_player, state, nodes_examined, max_depth, depth, al
                             return value, nodes_examined
                         alpha = max(value, alpha)
                     break
-     print(values_array)
+     #print(values_array)
+
      if depth == max_depth:
           best_move = max(range(7), key=lambda c: values_array[c] if values_array[c] is not None else -float('inf'))
           return best_move, nodes_examined

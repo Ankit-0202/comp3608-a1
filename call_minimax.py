@@ -13,7 +13,14 @@ def input_to_string(str):
 
 def connect_four_mm(contents, turn, max_depth):
 
-    state = input_to_string(contents)
+    #state = input_to_string(contents)
+    state = [['r', '.', '.', '.', '.', '.', '.'],
+         ['r', '.', '.', '.', '.', '.', '.'],
+         ['r', '.', '.', '.', '.', '.', '.'],
+         ['r', '.', '.', '.', '.', '.', '.'],
+         ['y', '.', '.', '.', '.', '.', '.'],
+         ['y', '.', '.', '.', '.', '.', '.']]
+
     
     global combs
     set_dict(combs)
@@ -39,32 +46,33 @@ def connect_four_mm(contents, turn, max_depth):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print()
-    print(connect_four_mm("ryryr..,rrryy..,yryy...,.yyr...,.ry....,..r....", "red", 10))
-    print()
-    print(connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 5))
-    print()
+    print(connect_four_mm("ry......,yr......,ry......,ry......,yr......,r.......", "red", 4))
+    #print()
+    #print(connect_four_mm("ryryr..,rrryy..,yryy...,.yyr...,.ry....,..r....", "red", 10))
+    #print()
+    #print(connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 5))
+    #print()
     # print("7")
-    print(connect_four_mm("..y.r..,..y.r..,.......,.......,.......,.......", "red", 1))
-    print()
+    #print(connect_four_mm("..y.r..,..y.r..,.......,.......,.......,.......", "red", 1))
+    #print()
     #print("8")
-    print(connect_four_mm("..y.r..,..y.r..,.......,.......,.......,.......", "yellow", 1))
-    print()
+    #print(connect_four_mm("..y.r..,..y.r..,.......,.......,.......,.......", "yellow", 1))
+    #print()
     # print("9")
-    print(connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 1))
-    print()
+    #print(connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 1))
+    #print()
     # print("10")
-    print(connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 2))
-    print()
+    #print(connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 2))
+    #print()
     # print("11")
-    print(connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 3))
-    print()
+    #print(connect_four_mm("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 3))
+    #print()
     # print("12")
-    print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 1))
-    print()
+    #print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 1))
+    #print()
     # print("13")
-    print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 2))
-    print()
+    #print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 2))
+    #print()
     # print("14")
-    print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 3))
+    #print(connect_four_mm("r..y..r,r..y..r,......r,.......,.......,.......", "red", 3))
     # print("Done!")
