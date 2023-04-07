@@ -19,11 +19,11 @@ combs = {}
 #         pickle.dump(dict, handle, protocol = pickle.HIGHEST_PROTOCOL)
 
 
-def dict_to_file(combs):
-    with open('dict.txt', 'w') as file:
-        file.write(json.dumps(combs)) # use `json.loads` to do the reverse
+# def dict_to_file(combs):
+#     with open('dict.txt', 'w') as file:
+#         file.write(json.dumps(combs)) # use `json.loads` to do the reverse
         
-    file.close()
+#     file.close()
 
 def input_to_string(str):
     list = str.split(",")
