@@ -59,6 +59,7 @@ def NUM_IN_A_ROW(arr, count, value):
             if all(arr[r][c+i] == value for i in range(count)) and \
             (c == 0 or arr[r][c-1] != value) and \
             (c + count == cols or arr[r][c+count] != value):
+                print("Hi")
                 total += 1
     
     # Check columns
