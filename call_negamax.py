@@ -1,5 +1,4 @@
 from negamax import negamax
-import time
 
 """
 Upon further research, we have decided to use the negamax function, which is a more 
@@ -13,9 +12,7 @@ def input_to_string(str):
     new_input = [[*i] for i in list]
     return new_input
 
-def connect_four_negamax(contents, turn):
-    
-    start_time = time.time()
+def connect_four(contents, turn):
     
     state = input_to_string(contents)
     
@@ -30,33 +27,9 @@ def connect_four_negamax(contents, turn):
     max_depth = 4
 
     values = negamax(turn, turn, state, max_depth, max_depth, alpha, beta)
-
-    end_time = time.time()
-    
-    print(end_time-start_time)
-    print(f'{values}')
-
     return f'{values}'
 
 
 if __name__ == '__main__':
-    # Example function call below, you can add your own to test the connect_four_negamax function
-    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    connect_four_negamax("yryr...,yyyr...,ryrr...,.......,.......,.......", "yellow")
-    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    # connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "red")
-    # connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "yellow")
-    # connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
-    # connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
-    # connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
-    # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
-    # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
-    # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
-    # connect_four_negamax("ryryrr.,rrryyy.,yryyy..,.yyry..,.ry.r..,.rr..r.", "red")
-    
-    # connect_four_negamax("ryryrry,rrryyyr,yryyyry,yyyryyy,rryyrrr,.rr..r.", "red")
+    connect_four("ryryrry,rrryyyr,yryyyry,yyyryyy,rryyrrr,.rr..r.", "red")
     
