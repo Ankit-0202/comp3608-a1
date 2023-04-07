@@ -33,6 +33,9 @@ def connect_four_mm(contents, turn, max_depth):
 
     
     values, nodes_examined = true_mn(turn, turn, state, 0, max_depth, max_depth)
+
+    if abs(values) == 10000:
+        values = 0
     
     # writing to the text file
     combs = get_dict()
