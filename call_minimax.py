@@ -1,21 +1,15 @@
-import pickle
-import os
+import json
 
 from helper_functions import set_dict
 from true_mn import true_mn
 
 combs = {}
 
-# def write_dict(dict):
-#     with open('dict_pickle.pickle', 'wb') as handle:
-#         pickle.dump(dict, handle, protocol = pickle.HIGHEST_PROTOCOL)
-
-
-# def dict_to_file(combs):
-#     with open('dict.txt', 'w') as file:
-#         file.write(json.dumps(combs)) # use `json.loads` to do the reverse
-        
-#     file.close()
+# reading the data from the file
+with open('dict.txt') as f:
+    data = f.read()
+    
+js = json.loads(data)
 
 def input_to_string(str):
     list = str.split(",")
@@ -27,7 +21,6 @@ def connect_four_mm(contents, turn, max_depth):
     state = input_to_string(contents)
     
     global combs
-    # combs = load_dict()
     set_dict(combs)
     
     
@@ -41,12 +34,7 @@ def connect_four_mm(contents, turn, max_depth):
     
     values, nodes_examined = true_mn(turn, turn, state, 0, max_depth, max_depth)
 
-    
-    # print("hi")
     # print(f'{column}\n{nodes_examined}')
-    # print("bye")
-    
-    # write_dict(combs)
 
     return f'{values}\n{nodes_examined}'
 

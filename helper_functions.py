@@ -1,11 +1,5 @@
 import copy
 import json
-  
-# reading the data from the file
-# with open('dict.txt') as f:
-#     data = f.read()
-    
-# js = json.loads(data)
 
 js = {}
 
