@@ -11,13 +11,8 @@ def input_to_string(str):
 
 def connect_four_mm(contents, turn, max_depth):
 
-    #state = input_to_string(contents)
-    state = [['r', '.', '.', '.', '.', '.', '.'],
-         ['r', '.', '.', '.', '.', '.', '.'],
-         ['r', '.', '.', '.', '.', '.', '.'],
-         ['r', '.', '.', '.', '.', '.', '.'],
-         ['.', '.', '.', '.', '.', '.', '.'],
-         ['.', '.', '.', '.', '.', '.', '.']]
+    state = input_to_string(contents)
+    print(state)
 
     
     global combs
@@ -47,7 +42,7 @@ def connect_four_mm(contents, turn, max_depth):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_mm("ry......,yr......,ry......,ry......,yr......,r.......", "red", 4))
+    print(connect_four_mm("ryryryr,yryryry,ryryryr,.......,.......,.......", "yellow", 4))
     #print()
     #print(connect_four_mm("ryryr..,rrryy..,yryy...,.yyr...,.ry....,..r....", "red", 10))
     #print()
