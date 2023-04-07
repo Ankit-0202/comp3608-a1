@@ -134,4 +134,4 @@ def UTILITY(state):
         if NUM_IN_A_ROW(state, 4, 'r') > 0:
             return 10000
         elif NUM_IN_A_ROW(state, 4, 'y') > 0:
-            return -10000
+            return -50000
