@@ -1,4 +1,4 @@
-from helper_functions import *
+from helper_functions import UTILITY, EVALUATION, check_full
 
 def switch_player(player):
      if player == 'r':
