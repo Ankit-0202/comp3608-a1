@@ -1,4 +1,5 @@
 import copy
+import pickle
 
 js = {}
 
@@ -133,7 +134,7 @@ def check_full(state):
                 return
             
 def simulate_move(state, row, column, player):
-    new_state = copy.deepcopy(state)
+    new_state = pickle.loads(pickle.dumps(new_state))
     new_state[row][column] = str(player)
     return new_state
         
