@@ -56,9 +56,54 @@ def connect_four_ab(contents, turn, max_depth):
 
     return f'{values}\n{nodes_examined}'
 
-
+def generate_boards():
+        boards = []
+        for i in range(3 ** 7):
+            board = []
+            for j in range(7):
+                col = []
+                for k in range(6):
+                    # Map the number to the corresponding symbol
+                    if (i // (3 ** j)) % 3 == 0:
+                        col.append('.')
+                    elif (i // (3 ** j)) % 3 == 1:
+                        col.append('y')
+                    else:
+                        col.append('r')
+                
+                # Check for flying pieces
+                if col.count('.') < 6:
+                    continue
+                
+                # Check for four in a row
+                invalid = False
+                for k in range(3):
+                    if col[k] == col[k+1] == col[k+2] == col[k+3] != '.':
+                        invalid = True
+                        break
+                        
+                if invalid:
+                    continue
+                    
+                board.append(col)
+                
+            # Check if the board is finished
+            if len(board) == 0:
+                continue
+            
+            boards.append(board)
+            
+        return boards
 
 if __name__ == '__main__':
+
+
+    #all_boards = generate_boards()
+
+    #for board in all_boards:
+        #print(connect_four_ab(board, 'red', 4))
+    """
+            
     # Example function call below, you can add your own to test the connect_four_ab function
     print()
     print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 4))
@@ -88,3 +133,4 @@ if __name__ == '__main__':
     print()
     # print("14")
     print(connect_four_ab("r..y..r,r..y..r,......r,.......,.......,.......", "red", 3))
+    """
