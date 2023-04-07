@@ -9,7 +9,7 @@ combs = {}
 with open('dict.txt') as f:
     data = f.read()
     
-js = json.loads(data)
+combs = json.loads(data)
 
 def input_to_string(str):
     list = str.split(",")
