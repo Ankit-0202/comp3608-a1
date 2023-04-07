@@ -27,7 +27,7 @@ def connect_four_negamax(contents, turn):
     beta = float('inf')
 
     # max_depth = random.randint(1, 4)
-    max_depth = 8
+    max_depth = 4
 
     values, nodes_examined = negamax(turn, turn, state, 0, max_depth, max_depth, alpha, beta)
 
