@@ -1,6 +1,6 @@
 # import random
 from negamax import negamax
-import time
+# import time
 
 """
 Upon further research, we have decided to use the negamax function, which is a more 
@@ -32,7 +32,6 @@ def connect_four_negamax(contents, turn):
     values, nodes_examined = negamax(turn, turn, state, 0, max_depth, max_depth, alpha, beta)
 
     return f'{values}\n{nodes_examined}'
-
 
 
 if __name__ == '__main__':

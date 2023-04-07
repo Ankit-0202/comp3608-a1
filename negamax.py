@@ -2,10 +2,9 @@ from helper_functions import *
 
 def switch_player(player):
      if player == 'r':
-          player = 'y'
+          return 'y'
      else:
-          player = 'r'
-     return player
+          return 'r'
 
 def negamax(player, original_player, state, nodes_examined, max_depth, depth, alpha, beta):
      print(state)
