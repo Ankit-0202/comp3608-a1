@@ -114,6 +114,7 @@ def count_in_a_row(arr, count, value):
         for item in row:
             moves_as_string += str(item)
     moves_as_string += "," + str(count) + value
+    
     global js
     js.update( {moves_as_string : total} )
     
