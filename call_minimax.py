@@ -18,11 +18,6 @@ def connect_four_mm(contents, turn, max_depth):
     global combs
     set_dict(combs)
     
-    # reading the data from the text file
-    # with open('dict.txt') as f:
-    #     data = f.read()
-    # combs = json.loads(data)
-    
     
     if turn == 'yellow':
         turn = 'y'
@@ -34,8 +29,6 @@ def connect_four_mm(contents, turn, max_depth):
     
     # writing to the text file
     combs = get_dict()
-    # with open('dict.txt', 'w') as dict_file:
-    #     dict_file.write(json.dumps(combs))
 
     # print(f'{column}\n{nodes_examined}')
 
