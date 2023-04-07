@@ -14,9 +14,9 @@ combs = {}
 #     except:
 #         return {}
 
-def write_dict(dict):
-    with open('dict_pickle.pickle', 'wb') as handle:
-        pickle.dump(dict, handle, protocol = pickle.HIGHEST_PROTOCOL)
+# def write_dict(dict):
+#     with open('dict_pickle.pickle', 'wb') as handle:
+#         pickle.dump(dict, handle, protocol = pickle.HIGHEST_PROTOCOL)
 
 
 def dict_to_file(combs):
