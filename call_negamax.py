@@ -45,7 +45,7 @@ if __name__ == '__main__':
     # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
     # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
     # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
-    # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
+    connect_four_negamax("yryr...,yyyr...,ryrr...,.......,.......,.......", "yellow")
     # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
     # connect_four_negamax(".......,.......,.......,.......,.......,.......", "red")
     # connect_four_negamax("..y.r..,..y.r..,.......,.......,.......,.......", "red")
@@ -58,5 +58,5 @@ if __name__ == '__main__':
     # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
     # connect_four_negamax("ryryrr.,rrryyy.,yryyy..,.yyry..,.ry.r..,.rr..r.", "red")
     
-    connect_four_negamax("ryryrry,rrryyyr,yryyyry,yyyryyy,rryyrrr,.rr..r.", "red")
+    # connect_four_negamax("ryryrry,rrryyyr,yryyyry,yyyryyy,rryyrrr,.rr..r.", "red")
     
