@@ -1,4 +1,4 @@
-from tree import Node
+from helper_functions import Node
 from time import sleep
 
 def input_to_string(str):

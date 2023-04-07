@@ -1,5 +1,5 @@
+from helper_functions import *
 from true_mn import *
-import numpy as np
 
 def input_to_string(str):
     list = str.split(",")

@@ -1,6 +1,4 @@
-from tree import *
-import functools
-import math
+from helper_functions import *
 
 
 lock_and_key = [0, 0]
@@ -115,27 +113,6 @@ def get_best_column(Node, value):
           if child.score == value:
                return child.column
                # print(scores[count])
-     
-     
-     
-     # scores = [0 for _ in range(7)]
-     # count = 0
-     # for child in node.children:
-     #      if child != 0:
-     #           scores[count] = child.score
-     #           # print(scores[count])
-     #           count += 1
-     # print("Scores:", scores)        
-     # # print("Index:", scores.index(value))     
-               
-     # return scores.index(value)
-     
-     
-     # if maximizing == False:
-     #      return scores.index(value)
-
-     # if maximizing == True:
-     #      return scores.index(value)
      
 def get_lak():
      global lock_and_key
