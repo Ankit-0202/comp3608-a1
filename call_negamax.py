@@ -29,7 +29,7 @@ def connect_four_negamax(contents, turn):
 
     max_depth = 4
 
-    values, nodes_examined = negamax(turn, turn, state, 0, max_depth, max_depth, alpha, beta)
+    values = negamax(turn, turn, state, max_depth, max_depth, alpha, beta)
 
     end_time = time.time()
     
@@ -59,5 +59,5 @@ if __name__ == '__main__':
     
     
     
-    connect_four_negamax("ryryrr.,rrryyy.,yryyy..,.yyry..,.ry.r..,.rr....", "red")
+    connect_four_negamax("ryryrry,rrryyyr,yryyyry,yyyryyy,rryyrrr,.rr..r.", "red")
     
