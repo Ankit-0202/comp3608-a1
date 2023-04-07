@@ -34,7 +34,6 @@ def connect_four_negamax(contents, turn):
     return f'{values}\n{nodes_examined}'
 
 
-
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
     print(connect_four_negamax(".......,.......,.......,.......,.......,.......", "red"))
