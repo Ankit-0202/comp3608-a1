@@ -1,4 +1,4 @@
-from helper_functions import *
+from nega_helper_functions import *
 
 def switch_player(player):
      if player == 'r':
@@ -7,7 +7,6 @@ def switch_player(player):
           return 'r'
 
 def negamax(player, original_player, state, nodes_examined, max_depth, depth, alpha, beta):
-     # print(state)
      nodes_examined = nodes_examined + 1
      ut = UTILITY(state)
      if ut:
