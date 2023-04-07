@@ -24,8 +24,8 @@ def connect_four_mm(contents, turn, max_depth):
     if turn == 'red':
         turn = 'r'
 
-    
-    values, nodes_examined = true_mn(turn, turn, state, 0, max_depth, max_depth)
+        
+        values, nodes_examined = true_mn(turn, turn, state, 0, max_depth, max_depth)
 
     if abs(values) == 10000:
         values = 0
@@ -42,7 +42,8 @@ def connect_four_mm(contents, turn, max_depth):
 
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
-    print(connect_four_mm("ryryryr,yryryry,ryryryr,.......,.......,.......", "yellow", 4))
+    print(connect_four_mm("ryryrry,rrryyyr,yryyyry,yyyryyy,rryyrrr,.rr..r.", "red", 5))
+    #print(connect_four_mm("ryryryr,yryryry,ryryryr,.......,.......,.......", "yellow", 4))
     #print()
     #print(connect_four_mm("ryryr..,rrryy..,yryy...,.yyr...,.ry....,..r....", "red", 10))
     #print()

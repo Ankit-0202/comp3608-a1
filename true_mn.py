@@ -44,15 +44,19 @@ def true_mn(player, original_player, state, nodes_examined, depth, max_depth, ma
                               valueA, nodes_examined = true_mn(switch_player(player), original_player, new_state ,nodes_examined, depth - 1, max_depth, True)
                          values_array[c] = valueA
                          if maximizing == True:
+                              print("Bie")
                               print(valueA, value)
+                              print(print("Hi"), max(10000,-10000), max(-10000, 10000))
                               value = max(value, valueA) 
+                              print(value)
                          else:
                               print(valueA, value)
                               print("Bye")
                               value = min(value, valueA)
                     break
+     print(values_array)
      if depth == max_depth:
-          return values_array.index(valueA), nodes_examined
+          return values_array.index(value), nodes_examined
      
      return value, nodes_examined
 
