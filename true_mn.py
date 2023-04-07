@@ -52,7 +52,7 @@ def true_mn(player, original_player, state, nodes_examined, depth, max_depth, ma
                               value = max(value, valueA) 
                          else:
                               value = min(value, valueA)
-                    break
+               break
 
      if depth == max_depth:
           return values_array.index(value), nodes_examined
@@ -80,21 +80,24 @@ def true_ab_pruning(player, original_player, state, nodes_examined, max_depth, d
                     if not check_full(state):
                          new_state = simulate_move(state, r, c, player)
                          if maximizing == True:
-                              valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state, nodes_examined, depth - 1, max_depth, alpha, beta, False)
-                         else:
-                              valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state ,nodes_examined, depth - 1, max_depth, alpha, beta, True)
-                         values_array.append(valueA)
-                         if maximizing == True:
+                              if alpha < beta:
+                                   valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state, nodes_examined, max_depth, depth -1, alpha, beta, False)
+                                   values_array.append(valueA)
                               value = max(value, valueA)
+                              if alpha >= beta:
+                                   return value, nodes_examined
                               alpha = max(value, alpha)
                          else:
+                              if alpha < beta:
+                                   valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state ,nodes_examined, max_depth, depth -1, alpha, beta, True)
+                                   values_array.append(valueA)
                               value = min(value, valueA)
-                              beta = min(value, beta)
-                         if alpha >= beta:
+                              if alpha >= value:
                                    return value, nodes_examined
-                         break
-                    if depth == max_depth:
-                         return values_array.index(value), nodes_examined
+                              beta = min(value, beta)
+                    break
+     if depth == max_depth:
+          return values_array.index(value), nodes_examined
      
      return value, nodes_examined
      
