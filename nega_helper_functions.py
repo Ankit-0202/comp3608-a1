@@ -1,23 +1,6 @@
-import copy
-import pickle
+import pickle, json
 
-js = {}
-
-def set_dict(combs):
-    global js
-    js = combs
-    
-def get_dict():
-    global js
-    return js
-
-def d_string(arr, count, value):
-    result = ""
-    for row in arr:
-        for item in row:
-            result += str(item)
-    result += "," + str(count) + value
-    return result
+js = json.load(open("dict.txt"))
 
 def EVALUATION(state, player):
     if player == 'r':
@@ -40,7 +23,12 @@ def count_tokens(state, item):
 def NUM_IN_A_ROW(arr, count, value):
     
     global js
-    moves_as_string = d_string(arr, count, value)
+    
+    moves_as_string = ""
+    for row in arr:
+        for item in row:
+            moves_as_string += str(item)
+    moves_as_string += "," + str(count) + value
     
     if moves_as_string in js:
         return js[moves_as_string]
@@ -49,7 +37,7 @@ def NUM_IN_A_ROW(arr, count, value):
     if count == 4:
         return int(count_in_a_row(arr, count, value))
 
-    rows, cols = len(arr), len(arr[0])
+    rows, cols = 6, 7
     total = 0
     
     # Check rows
