@@ -7,16 +7,30 @@ def switch_player(player):
           player = 'r'
      return player
 
+mm_dict = {}
+
+def mm_to_string(player, original_player, state, nodes_examined, depth, max_depth, maximizing):
+     result = ""
+     for row in state:
+          for item in row:
+               result += str(item)
+     result += "," + player + original_player + str(nodes_examined) + str(depth) + str(nodes_examined) + str(max_depth) + str(maximizing)
+     return result
 
 def true_mn(player, original_player, state, nodes_examined, depth, max_depth, maximizing = True):
-
+     
+     mm_s = mm_to_string(player, original_player, state, nodes_examined, depth, max_depth, maximizing)
+     
+     global mm_dict
+     if mm_s in mm_dict:
+          return mm_dict[mm_s]
+     
+     nodes_examined = nodes_examined + 1
      if UTILITY(state):
           return UTILITY(state), nodes_examined
 
      if depth == 0:
-          return EVALUATION(state, original_player),nodes_examined
-     
-     nodes_examined = nodes_examined + 1
+          return EVALUATION(state, original_player), nodes_examined
      
      if maximizing == True:
           value = -float('inf')
@@ -44,45 +58,6 @@ def true_mn(player, original_player, state, nodes_examined, depth, max_depth, ma
      if depth == max_depth:
           return values_array.index(value), nodes_examined
      
-     return value, nodes_examined
-
-def true_ab_pruning(player, original_player, state, nodes_examined, max_depth, depth, alpha, beta, maximizing = True):
-     nodes_examined = nodes_examined + 1
-     if UTILITY(state):
-          return UTILITY(state), nodes_examined
-
-     if depth == 0:
-          return EVALUATION(state, original_player),nodes_examined
-     
-     values_array = []
-
-     if maximizing == True:
-          value = -float('inf')
-     else:
-          value = float('inf')
-     for c in range(7):
-          for r in (range(6)):
-               if state[r][c] == '.':
-                    if not check_full(state):
-                         new_state = simulate_move(state, r, c, player)
-                         if maximizing == True:
-                              if alpha < beta:
-                                   valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state, nodes_examined, max_depth, depth -1, alpha, beta, False)
-                                   values_array.append(valueA)
-                              value = max(value, valueA)
-                              if alpha >= beta:
-                                   return value, nodes_examined
-                              alpha = max(value, alpha)
-                         else:
-                              if alpha < beta:
-                                   valueA, nodes_examined = true_ab_pruning(switch_player(player), original_player, new_state ,nodes_examined, max_depth, depth -1, alpha, beta, True)
-                                   values_array.append(valueA)
-                              value = min(value, valueA)
-                              if alpha >= value:
-                                   return value, nodes_examined
-                              beta = min(value, beta)
-                    break
-     if depth == max_depth:
-          return values_array.index(value), nodes_examined
+     mm_dict[mm_s] = value, nodes_examined
      
      return value, nodes_examined
