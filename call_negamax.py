@@ -1,6 +1,6 @@
 # import random
 from negamax import negamax
-import time
+# import time
 
 """
 Upon further research, we have decided to use the negamax function, which is a more 
