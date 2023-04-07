@@ -9,8 +9,9 @@ def switch_player(player):
 def negamax(player, original_player, state, nodes_examined, max_depth, depth, alpha, beta):
      # print(state)
      nodes_examined = nodes_examined + 1
-     if UTILITY(state):
-          return UTILITY(state), nodes_examined
+     ut = UTILITY(state)
+     if ut:
+          return ut, nodes_examined
 
      if depth == 0:
           return EVALUATION(state, original_player), nodes_examined
@@ -20,9 +21,7 @@ def negamax(player, original_player, state, nodes_examined, max_depth, depth, al
      value = -float('inf')
 
      for c in range(7):
-          # print(c)
           for r in (range(6)):
-               # print(r,c)
                if state[r][c] == '.':
                     if not check_full(state):
                         new_state = simulate_move(state, r, c, player)
@@ -34,7 +33,6 @@ def negamax(player, original_player, state, nodes_examined, max_depth, depth, al
                             return value, nodes_examined
                         alpha = max(value, alpha)
                     break
-     #print(values_array)
 
      if depth == max_depth:
           best_move = max(range(7), key=lambda c: values_array[c] if values_array[c] is not None else -float('inf'))
