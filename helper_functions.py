@@ -132,7 +132,8 @@ def check_full(state):
         for element in row:
             if element == '.':
                 return
-            
+
+
 def simulate_move(state, row, column, player):
     new_state = pickle.loads(pickle.dumps(state))
     new_state[row][column] = str(player)
