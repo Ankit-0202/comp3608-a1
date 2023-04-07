@@ -5,14 +5,14 @@ from true_mn import *
 
 combs = {}
 
-def load_dict():
+# def load_dict():
     
-    try:
-        with open('dict_pickle.pickle', 'rb') as handle:
-            combs = pickle.load(handle)
-        return combs
-    except:
-        return {}
+#     try:
+#         with open('dict_pickle.pickle', 'rb') as handle:
+#             combs = pickle.load(handle)
+#         return combs
+#     except:
+#         return {}
 
 def write_dict(dict):
     with open('dict_pickle.pickle', 'wb') as handle:
@@ -35,7 +35,7 @@ def connect_four_mm(contents, turn, max_depth):
     state = input_to_string(contents)
     
     global combs
-    combs = load_dict()
+    # combs = load_dict()
     set_dict(combs)
     
     
@@ -54,7 +54,7 @@ def connect_four_mm(contents, turn, max_depth):
     # print(f'{column}\n{nodes_examined}')
     # print("bye")
     
-    write_dict(combs)
+    # write_dict(combs)
 
     return f'{values}\n{nodes_examined}'
 
