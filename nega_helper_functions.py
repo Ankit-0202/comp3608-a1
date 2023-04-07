@@ -132,7 +132,7 @@ def simulate_move(state, row, column, player):
     return new_state
         
 def UTILITY(state):
-        if NUM_IN_A_ROW(state, 4, 'r') > 0:
-            return 10000
-        elif NUM_IN_A_ROW(state, 4, 'y') > 0:
-            return -50000
+    if NUM_IN_A_ROW(state, 4, 'r') > 0:
+        return 10000
+    elif NUM_IN_A_ROW(state, 4, 'y') > 0:
+        return -50000
