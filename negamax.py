@@ -13,7 +13,7 @@ def negamax(player, original_player, state, nodes_examined, max_depth, depth, al
           return UTILITY(state), nodes_examined
 
      if depth == 0:
-          return EVALUATION(state, original_player),nodes_examined
+          return EVALUATION(state, original_player), nodes_examined
      
      values_array = [None] * 7
 
