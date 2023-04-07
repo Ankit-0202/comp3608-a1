@@ -1,4 +1,3 @@
-# import random
 from negamax import negamax
 # import time
 
