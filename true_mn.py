@@ -1,18 +1,5 @@
 from helper_functions import *
 
-
-lock_and_key = [0, 0]
-
-def get_valid_moves(board):
-    valid_moves = []
-    for col in range(len(board[0])):
-        for row in range(len(board)-1, -1, -1):
-            if board[row][col] == '.':
-                valid_moves.append((row, col))
-                break
-    return valid_moves
-
-
 def switch_player(player):
      if player == 'r':
           player = 'y'
@@ -56,19 +43,3 @@ def true_mn(player, original_player, state, nodes_examined, depth, max_depth, ma
           return values_array.index(value), nodes_examined
      
      return value, nodes_examined
-
-
-def get_best_column(Node, value):
-     
-     temp_node = 0
-     
-     count = 0
-     print("Value:", value)
-     for child in node.children:
-          if child.score == value:
-               return child.column
-               # print(scores[count])
-     
-def get_lak():
-     global lock_and_key
-     return lock_and_key

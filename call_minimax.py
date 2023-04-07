@@ -1,7 +1,7 @@
 import json
 
-from helper_functions import *
-from true_mn import *
+from helper_functions import set_dict, get_dict
+from true_mn import true_mn
 
 combs = {}
 
