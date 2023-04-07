@@ -31,7 +31,8 @@ def negamax(player, original_player, state, nodes_examined, max_depth, depth, al
                         if alpha >= beta:
                             return value, nodes_examined
                         alpha = max(value, alpha)
-                    break
+               break
+
      if depth == max_depth:
           return values_array.index(value), nodes_examined
      

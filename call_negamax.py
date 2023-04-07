@@ -1,5 +1,6 @@
 # import random
 from negamax import negamax
+import time
 
 """
 Upon further research, we have decided to use the negamax function, which is a more 
@@ -26,7 +27,7 @@ def connect_four_negamax(contents, turn):
     beta = float('inf')
 
     # max_depth = random.randint(1, 4)
-    max_depth = 2
+    max_depth = 8
 
     values, nodes_examined = negamax(turn, turn, state, 0, max_depth, max_depth, alpha, beta)
 

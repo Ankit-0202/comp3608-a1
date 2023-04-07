@@ -1,7 +1,8 @@
 import pickle
+import json
 
-from helper_functions import *
-from true_mn import *
+from helper_functions import set_dict, get_dict
+from true_mn import true_ab_pruning
 
 combs = {}
 
@@ -58,5 +59,32 @@ def connect_four_ab(contents, turn, max_depth):
 
 
 if __name__ == '__main__':
-    # Example function call below, you can add your own to test the connect_four_mm function
+    # Example function call below, you can add your own to test the connect_four_ab function
+    print()
+    print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 4))
+    print()
     print(connect_four_ab(".......,.......,.......,.......,.......,.......", "red", 5))
+    print()
+    # print("7")
+    print(connect_four_ab("..y.r..,..y.r..,.......,.......,.......,.......", "red", 1))
+    print()
+    #print("8")
+    print(connect_four_ab("..y.r..,..y.r..,.......,.......,.......,.......", "yellow", 1))
+    print()
+    # print("9")
+    print(connect_four_ab("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 1))
+    print()
+    # print("10")
+    print(connect_four_ab("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 2))
+    print()
+    # print("11")
+    print(connect_four_ab("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red", 3))
+    print()
+    # print("12")
+    print(connect_four_ab("r..y..r,r..y..r,......r,.......,.......,.......", "red", 1))
+    print()
+    # print("13")
+    print(connect_four_ab("r..y..r,r..y..r,......r,.......,.......,.......", "red", 2))
+    print()
+    # print("14")
+    print(connect_four_ab("r..y..r,r..y..r,......r,.......,.......,.......", "red", 3))
