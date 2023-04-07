@@ -40,37 +40,34 @@ def NUM_IN_A_ROW(arr, count, value):
     rows, cols = 6, 7
     total = 0
     
+    # Check rows
     for r in range(rows):
-        for c in range(cols):
-            if c <= cols - count:
-                # Check row
-                row_slice = arr[r][c:c+count]
-                if row_slice.count(value) == count and \
-                (c == 0 or arr[r][c-1] != value) and \
-                (c + count == cols or arr[r][c+count] != value):
-                    total += 1
-            if r <= rows - count:
-                if c <= cols - count:
-                    # Check diagonal (top left to bottom right)
-                    diag_slice = [arr[r+i][c+i] for i in range(count)]
-                    if diag_slice.count(value) == count and \
-                    (r == 0 or c == 0 or arr[r-1][c-1] != value) and \
-                    (r + count == rows or c + count == cols or arr[r+count][c+count] != value):
-                        total += 1
-                if c >= count - 1:
-                    # Check diagonal (bottom left to top right)
-                    diag_slice = [arr[r+i][c-i] for i in range(count)]
-                    if diag_slice.count(value) == count and \
-                    (r == 0 or c + count == cols or arr[r-1][c+count-1] != value) and \
-                    (r + count == rows or c == count - 1 or arr[r+count][c-count+1] != value):
-                        total += 1
-            if r <= rows - count:
-                # Check column
-                col_slice = [arr[r+i][c] for i in range(count)]
-                if col_slice.count(value) == count and \
-                (r == 0 or arr[r-1][c] != value) and \
-                (r + count == rows or arr[r+count][c] != value):
-                    total += 1
+        for c in range(cols - count + 1):
+            if all(arr[r][c+i] == value for i in range(count)) and \
+            (c == 0 or arr[r][c-1] != value) and \
+            (c + count == cols or arr[r][c+count] != value):
+                total += 1
+    
+    # Check columns
+    for c in range(cols):
+        for r in range(rows - count + 1):
+            if all(arr[r+i][c] == value for i in range(count)) and \
+            (r == 0 or arr[r-1][c] != value) and \
+            (r + count == rows or arr[r+count][c] != value):
+                total += 1
+    
+    # Check diagonals
+    for r in range(rows - count + 1):
+        for c in range(cols - count + 1):
+            if all(arr[r+i][c+i] == value for i in range(count)) and \
+            (r == 0 or c == 0 or arr[r-1][c-1] != value) and \
+            (r + count == rows or c + count == cols or arr[r+count][c+count] != value):
+                total += 1
+            
+            if all(arr[r+i][c+count-1-i] == value for i in range(count)) and \
+            (r == 0 or c + count == cols or arr[r-1][c+count] != value) and \
+            (r + count == rows or c == 0 or arr[r+count][c-1] != value):
+                total += 1
                 
                 
     

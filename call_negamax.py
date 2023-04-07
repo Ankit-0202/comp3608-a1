@@ -34,8 +34,9 @@ def connect_four_negamax(contents, turn):
     end_time = time.time()
     
     print(end_time-start_time)
+    print(f'{values}')
 
-    return f'{values}\n{nodes_examined}'
+    return f'{values}'
 
 
 if __name__ == '__main__':
@@ -54,5 +55,9 @@ if __name__ == '__main__':
     # connect_four_negamax("..y.r..,..y.r..,..y.r..,.......,.......,.......", "red")
     # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
     # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
-    connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
+    # connect_four_negamax("r..y..r,r..y..r,......r,.......,.......,.......", "red")
+    
+    
+    
+    connect_four_negamax("ryryrr.,rrryyy.,yryyy..,.yyry..,.ry.r..,.rr....", "red")
     
