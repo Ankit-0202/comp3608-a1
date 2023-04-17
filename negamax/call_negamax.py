@@ -31,5 +31,5 @@ def connect_four(contents, turn):
 
 
 if __name__ == '__main__':
-    connect_four("ryryrry,rrryyyr,yryyyry,yyyryyy,rryyrrr,.rr..r.", "red")
+    print(connect_four('y.yr.yy,r..r.yy,...y.ry,...r.rr,...y...,...r...', "yellow"))
     

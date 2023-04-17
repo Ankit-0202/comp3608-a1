@@ -51,7 +51,7 @@ def connect_four_mm(contents, turn, max_depth):
 if __name__ == '__main__':
     # Example function call below, you can add your own to test the connect_four_mm function
     # print(connect_four_mm("rrrr...,.......,.......,.......,.......,.......", "red", 4))
-    connect_four_mm(".......,.......,.......,.......,.......,.......", "red", 5)
+    connect_four_mm("yryr...,yyyr...,ryrr...,.......,.......,.......", "red", 5)
     # print("7")
     # print(connect_four_mm("..y.r..,..y.r..,.......,.......,.......,.......", "red", 1))
     # print("8")

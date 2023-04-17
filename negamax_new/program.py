@@ -6,7 +6,7 @@ from negamax import negamax
 Upon further research, we have decided to use the negamax function, which is a more 
 efficent use of the minimax function with alpha-beta pruning, as negamax is meant for zero-sum games which fit
 our game of connect four. We have also decided to use the negamax function because it is more efficient. 
-We will also decide to use a random max_depth between 1 and 4 for this case, as it is not being supplied to us. 
+We will also decide to use a max_depth 4 for this case, as it is not being supplied to us. 
 """
 
 def input_to_string(str):
@@ -26,7 +26,7 @@ def connect_four(contents, turn):
     alpha = -float('inf')
     beta = float('inf')
 
-    max_depth = random.randint(1, 4)
+    max_depth = 4
 
     values, nodes_examined = negamax(turn, turn, state, 0, max_depth, max_depth, alpha, beta)
 
@@ -35,8 +35,8 @@ def connect_four(contents, turn):
 if __name__ == '__main__':
     if len(sys.argv) <= 1:
         # You can modify these values to test your code
-        board = '.ryyrry,.rryry.,..y.r..,..y....,.......,.......'
-        player = 'red'
+        board = '..yr...,..r....,.......,.......,.......,.......'
+        player = 'yellow'
     else:
         board = sys.argv[1]
         player = sys.argv[2]

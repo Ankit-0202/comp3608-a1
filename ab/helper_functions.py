@@ -21,11 +21,7 @@ def d_string(arr, count, value):
     return result
 
 def EVALUATION(state, player):
-        if player == 'r':
           return SCORE(state, 'r') - SCORE(state, 'y')
-        elif player == 'y':
-           return SCORE(state, 'y') - SCORE(state, 'r')
-
 def SCORE(state, player):
         val = count_tokens(state, player) + 10 * NUM_IN_A_ROW(state, 2, player) + 100 * NUM_IN_A_ROW(state, 3, player) + 1000 * NUM_IN_A_ROW(state, 4, player)
         return val
