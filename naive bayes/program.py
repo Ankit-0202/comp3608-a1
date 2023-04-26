@@ -1,13 +1,9 @@
 import pandas as pd
 import statistics as stat
 import math
-import csv
 
 def classify_nb(training_filename, testing_filename):
-    with open(training_filename, 'r') as file:
-      csvreader = csv.reader(file)
-      for row in csvreader:
-        print(row)
+  
     training = pd.read_csv(training_filename, header=None)
     testing = pd.read_csv(testing_filename, header=None)
     
@@ -19,8 +15,8 @@ def classify_nb(training_filename, testing_filename):
     yes_means, yes_stddevs = math_tools(train_yes)
     no_means, no_stddevs = math_tools(train_no)
     results = test_nb_classifier(testing, yes_means, yes_stddevs, no_means, no_stddevs, yes_probability, no_probability)
-    training.to_csv('train.csv', index = False)
-    return training.values.tolist()
+    #print(results)
+    return results
  
   
 def math_tools(df):
@@ -33,7 +29,7 @@ def test_nb_classifier(testing, yes_means, yes_stddevs, no_means, no_stddevs, ye
   for index, row in testing.iterrows():
     yes_final = yes_probability
     no_final = no_probability
-    for i in range(len(row) - 1):
+    for i in range(len(row)):
         yes_final *= probability_density_function(yes_means[i], yes_stddevs[i], row[i])
         no_final *= probability_density_function(no_means[i], no_stddevs[i], row[i])
     results.append('no') if yes_final < no_final else results.append('yes')
@@ -47,4 +43,4 @@ def probability_density_function(mean, stddev, value):
 
 
 
-print(classify_nb('train.csv', 'test.csv'))
+#print(classify_nb('train.csv', 'test.csv'))
