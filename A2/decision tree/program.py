@@ -12,9 +12,10 @@ def classify_dt(training_filename, testing_filename):
     num_no = (training[training.iloc[:, -1] == 'no']).shape[0]
     default = 'yes' if num_yes >= num_no  else 'no'
     tree = decision_tree(training, list(range(training.shape[1] - 1)), default)
-    results = decision_tree_test(tree, testing, default)
+    decision_tree_print(tree)
+    #results = decision_tree_test(tree, testing, default)
     #print(results)
-    return results
+    return ''
   
 def information_gain_chooser(possible_attributes, df):
   best_col = None
@@ -61,7 +62,20 @@ def gain(yes_df, no_df):
 
 
 
-  
+def decision_tree_print(tree):
+  decision_tree_print_recursive_helper(tree, 0)
+
+def decision_tree_print_recursive_helper(node, level):
+  print("  " * level, end = "")
+  if node.isLeaf == True:
+    print(node.attr)
+  else:
+    print(node.attr)
+    for i in node.child:
+      print("  " * (level + 1), end = "")
+      print(i[0], end = "")
+      decision_tree_print_recursive_helper(i[1], level + 1)
+
   
 def decision_tree_test(tree, df, default):
     results = []
@@ -132,7 +146,7 @@ def decision_tree(examples, attributes, default):
       #print(tree.child)
   return tree
 
-#print(classify_dt('train.csv', 'test.csv'))
+print(classify_dt('train.csv', 'test.csv'))
  
     
   
